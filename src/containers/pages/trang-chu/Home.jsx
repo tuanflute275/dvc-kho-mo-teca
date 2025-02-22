@@ -89,8 +89,6 @@ const Home = () => {
     //   console.log("data-email:", element.dataset.email);
     // }
 
-    // const defaultPermissions = ["submit_data", "edit_data"];
-    // localStorage.setItem("permissions", JSON.stringify(defaultPermissions))
     const storedPermissions =
       JSON.parse(localStorage.getItem("permissions")) || [];
     setPermissions(storedPermissions);

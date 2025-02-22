@@ -83,7 +83,7 @@
   },
 
   "home": {
-    "titleForm": "Mẫu Form",
+    "TitleForm": "Mẫu Form",
     "BtnSubmit": "Gửi dữ liệu",
     "PlNhapTen": "Nhập tên",
     "PlNhapEmail": "Nhập email",

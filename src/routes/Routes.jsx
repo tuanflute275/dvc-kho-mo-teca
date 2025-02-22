@@ -33,7 +33,7 @@ export const appRoutes = [
     path: "/",
     element: <MasterLayout child={<Home />} />,
     protected: false,
-    can:["delete_data"]
+    can:["edit_data"]
   },
   {
     path: "category",

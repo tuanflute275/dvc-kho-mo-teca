@@ -20,6 +20,8 @@ function Login() {
         email: "admin-teca@gmail.com",
       };
       dispatch(setUser(dataUser));
+      const defaultPermissions = ["submit_data", "edit_data"];
+      localStorage.setItem("permissions", JSON.stringify(defaultPermissions));
       navigate("/");
     }
 
