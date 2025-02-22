@@ -8,6 +8,8 @@ import AddCategory from "../containers/pages/category/add/AddCategory";
 import ListCategory from "../containers/pages/category/list/ListCategory";
 import EditCategory from "../containers/pages/category/update/EditCategory";
 
+
+
 export const appRoutes = [
   {
     path: "/login",
@@ -32,8 +34,8 @@ export const appRoutes = [
   {
     path: "/",
     element: <MasterLayout child={<Home />} />,
-    protected: false,
-    can:["delete_data"]
+    protected: true,
+    can: ["nguoi_dan", "can_bo"]
   },
   {
     path: "category",

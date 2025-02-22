@@ -19,6 +19,7 @@ function Login() {
         fullname: "TECAPRO",
         email: "admin-teca@gmail.com",
       };
+      localStorage.setItem("permissions", JSON.stringify(["delete_data", "update_data", "get_data"]));
       dispatch(setUser(dataUser));
       navigate("/");
     }
