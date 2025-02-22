@@ -1,27 +1,21 @@
-import React, { useCallback, useEffect, useState } from "react";
-import "./home.scss";
-import { AppButton, AppInput, AppModal } from "~/components/common";
-import { useNavigate } from "react-router-dom";
-import { validateFormHelper } from "~/utils/helper";
-import { useTranslate } from "~/context/LanguageContext";
+import React, { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useNotifyHelper from '~/hooks/useNotifyHelper';
+import { useTranslate } from '~/context/LanguageContext';
+import { AppButton, AppInput } from '~/components/common';
 
-import { exportDataToFile } from "~/utils/exportHelper";
-import {
-  TYPE_CSV,
-  TYPE_JSON,
-  TYPE_PDF,
-  TYPE_XLSX,
-  TYPE_XML,
-} from "~/utils/constants";
-import useNotifyHelper from "~/hooks/useNotifyHelper";
+import './home.scss';
+import { helper } from '~/utils';
+import { exportData } from '~/utils';
+import { constants } from '~/utils';
 
 const Home = () => {
   // call API default value
   const initData = {
-    name: "",
-    email: "",
-    password: "",
-    status: "active",
+    name: '',
+    email: '',
+    password: '',
+    status: 'active',
   };
 
   const navigate = useNavigate();
@@ -34,7 +28,7 @@ const Home = () => {
   const handleChangeValue = (e) => {
     const { name, value } = e.target;
     setPostData({ ...postData, [name]: value });
-    setErrors({ ...errors, [name]: "" });
+    setErrors({ ...errors, [name]: '' });
   };
 
   const handleSelectChange = (value) => {
@@ -42,37 +36,33 @@ const Home = () => {
       ...postData,
       status: value,
     });
-    setErrors({ ...errors, status: "" });
+    setErrors({ ...errors, status: '' });
   };
 
   const rules = {
-    name: [{ required: true, message: t("home.TenEmpty") }],
-    email: [{ required: true, message: t("home.EmailEmpty"), email: true }],
+    name: [{ required: true, message: t('home.TenEmpty') }],
+    email: [{ required: true, message: t('home.EmailEmpty'), email: true }],
     password: [
-      { required: true, message: t("home.PassEmpty") },
-      { minLength: 6, message: "Mật khẩu phải có ít nhất 6 ký tự!" },
+      { required: true, message: t('home.PassEmpty') },
+      { minLength: 6, message: 'Mật khẩu phải có ít nhất 6 ký tự!' },
     ],
-    status: [{ required: true, message: "Trạng thái không được để trống!" }],
+    status: [{ required: true, message: 'Trạng thái không được để trống!' }],
   };
 
   // tránh tạo lại hàm handleSubmit mỗi khi component re-render.
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      const validationErrors = validateFormHelper(postData, rules);
+      const validationErrors = helper.validateFormHelper(postData, rules);
       setErrors(validationErrors);
       if (Object.keys(validationErrors).length === 0) {
-        console.log("Dữ liệu hợp lệ:", postData);
-        notifyHelper(
-          "success",
-          "Thành công!",
-          "Bạn đã thực hiện hành động thành công."
-        );
+        console.log('Dữ liệu hợp lệ:', postData);
+        notifyHelper('success', 'Thành công!', 'Bạn đã thực hiện hành động thành công.');
       } else {
-        console.log("Lỗi form invalid:", validationErrors);
+        console.log('Lỗi form invalid:', validationErrors);
       }
     },
-    [postData]
+    [postData],
   );
 
   useEffect(() => {
@@ -89,22 +79,20 @@ const Home = () => {
     //   console.log("data-email:", element.dataset.email);
     // }
 
-    const storedPermissions =
-      JSON.parse(localStorage.getItem("permissions")) || [];
+    const storedPermissions = JSON.parse(localStorage.getItem('permissions')) || [];
     setPermissions(storedPermissions);
   }, []);
 
-  const hasPermission = (requiredPermission) =>
-    permissions.includes(requiredPermission);
+  const hasPermission = (requiredPermission) => permissions.includes(requiredPermission);
 
   const handleDownload = (type) => {
     console.log(1);
     const data = [
-      { id: "1", name: "category 1", status: "Còn" },
-      { id: "2", name: "category 2", status: "Còn" },
-      { id: "3", name: "category 3", status: "Hết" },
-      { id: "4", name: "category 4", status: "Hết" },
-      { id: "5", name: "category 5", status: "Còn" },
+      { id: '1', name: 'category 1', status: 'Còn' },
+      { id: '2', name: 'category 2', status: 'Còn' },
+      { id: '3', name: 'category 3', status: 'Hết' },
+      { id: '4', name: 'category 4', status: 'Hết' },
+      { id: '5', name: 'category 5', status: 'Còn' },
     ];
 
     const option = {
@@ -115,30 +103,30 @@ const Home = () => {
       //   "Trạng Thái": { width: 15, alignment: { horizontal: "right" } }, // Độ rộng và căn phải cho cột Trạng Thái
       // },
       headerStyle: {
-        fontColor: "FFFFFFFF",
-        backgroundColor: "63b039",
+        fontColor: 'FFFFFFFF',
+        backgroundColor: '63b039',
         bold: true,
-        alignment: { vertical: "middle", horizontal: "center" },
+        alignment: { vertical: 'middle', horizontal: 'center' },
       },
     };
     if (type == 1) {
-      exportDataToFile(data, TYPE_JSON);
+      exportData.exportDataToFile(data, constants.TYPE_JSON);
     }
     if (type == 2) {
-      exportDataToFile(data, TYPE_XML);
+      exportData.exportDataToFile(data, constants.TYPE_XML);
     }
     if (type == 3) {
-      exportDataToFile(data, TYPE_CSV);
+      exportData.exportDataToFile(data, constants.TYPE_CSV);
     }
     if (type == 4) {
-      exportDataToFile(data, TYPE_XLSX, "dataok", option);
+      exportData.exportDataToFile(data, constants.TYPE_XLSX, 'dataok', option);
     }
   };
 
   return (
     <>
       {notifyComponent}
-      <div style={{ width: "100px", margin: "10px" }}>
+      <div style={{ width: '100px', margin: '10px' }}>
         <select onChange={(e) => setLanguage(e.target.value)} value={language}>
           <option value="vi">VI-Tiếng Việt</option>
           <option value="en">EN-English</option>
@@ -152,12 +140,12 @@ const Home = () => {
       <button onClick={() => handleDownload(4)}>download XLSX</button>
       <button onClick={() => handleDownload(5)}>download PDF</button>
 
-      <form onSubmit={handleSubmit} style={{ width: 400, margin: "auto" }}>
-        <h1>{t("app.Welcome")}</h1>
-        <h2>{t("home.TitleForm")}</h2>
+      <form onSubmit={handleSubmit} style={{ width: 400, margin: 'auto' }}>
+        <h1>{t('app.Welcome')}</h1>
+        <h2>{t('home.TitleForm')}</h2>
         <AppInput
           name="name"
-          placeholder={t("home.PlNhapTen")}
+          placeholder={t('home.PlNhapTen')}
           value={postData.name}
           onChange={handleChangeValue}
           error={errors.name}
@@ -166,7 +154,7 @@ const Home = () => {
 
         <AppInput
           name="email"
-          placeholder={t("home.PlNhapEmail")}
+          placeholder={t('home.PlNhapEmail')}
           value={postData.email}
           onChange={handleChangeValue}
           error={errors.email}
@@ -178,7 +166,7 @@ const Home = () => {
         <AppInput
           name="password"
           type="password"
-          placeholder={t("home.PlNhapMK")}
+          placeholder={t('home.PlNhapMK')}
           value={postData.password}
           onChange={handleChangeValue}
           error={errors.password}
@@ -191,8 +179,8 @@ const Home = () => {
           value={postData.status}
           onChange={handleSelectChange}
           data={[
-            { id: "active", label: "Hoạt động" },
-            { id: "inactive", label: "Không hoạt động" },
+            { id: 'active', label: 'Hoạt động' },
+            { id: 'inactive', label: 'Không hoạt động' },
           ]}
           valueType="id"
           valueName="label"
@@ -200,14 +188,14 @@ const Home = () => {
         />
 
         <AppButton
-          text={t("home.BtnSubmit")}
+          text={t('home.BtnSubmit')}
           type="primary"
           bg="blue"
           color="white"
           onClick={handleSubmit}
           style={{ marginTop: 10 }}
           //disabled={!hasPermission("delete_data")}
-          disabled={!hasPermission("submit_data")}
+          disabled={!hasPermission('submit_data')}
         />
       </form>
     </>

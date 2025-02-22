@@ -1,5 +1,5 @@
 import { API_URI } from '~/utils/constants';
-import * as http from '~/utils/httpCommon';
+import * as http from '~/utils/httpRequest';
 
 export const findAll = async () => {
   try {

@@ -1,5 +1,5 @@
 import React from "react";
-import "./header.scss";
+import "./appHeader.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { clearData, selectUserData } from "~/redux/reducers/user";

@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout } from "antd";  // Sử dụng Layout từ Ant Design
-import "./footer.scss";
+import "./appFooter.scss";
 
 const { Footer } = Layout;
 

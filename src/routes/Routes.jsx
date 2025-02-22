@@ -1,5 +1,5 @@
 import Login from "~/containers/pages/login/Login";
-import Home from "~/containers/pages/trang-chu/Home";
+import Home from "~/containers/pages/TrangChu/Home";
 import MasterLayout from "~/containers/layouts/MasterLayout";
 import Page500 from "~/containers/pages/result/Page500";
 import Page403 from "~/containers/pages/result/Page403";

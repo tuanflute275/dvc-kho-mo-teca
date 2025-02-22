@@ -1,40 +1,52 @@
-import React from "react";
-import { Button, Tooltip } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
+import React from 'react';
+import { Button, Tooltip } from 'antd';
+import PropTypes from 'prop-types';
 
-const AppButton = (props) => {
+const AppButton = ({ title, disabled, type, variant, bg, color, icon, text, onClick, ...rest }) => {
   return (
-    <Tooltip title={props.title}>
-      {props.disabled ? (
+    <Tooltip title={title}>
+      {disabled ? (
         <Button
-          type={props.type}
-          variant={props.variant}
+          type={type}
+          variant={variant}
           style={{
-            backgroundColor: props.bg,
-            color: props.color,
-            
+            backgroundColor: bg,
+            color: color,
           }}
           disabled
         >
-          {props.icon}
-          {props.text}
+          {icon}
+          {text}
         </Button>
       ) : (
         <Button
-          type={props.type}
-          variant={props.variant}
+          type={type}
+          variant={variant}
           style={{
-            backgroundColor: props.bg,
-            color: props.color,
+            backgroundColor: bg,
+            color: color,
           }}
-          onClick={props.onClick}
+          onClick={onClick}
+          {...rest}
         >
-          {props.icon}
-          {props.text}
+          {icon}
+          {text}
         </Button>
       )}
     </Tooltip>
   );
+};
+
+AppButton.propTypes = {
+  title: PropTypes.string,
+  disabled: PropTypes.bool,
+  type: PropTypes.string,
+  variant: PropTypes.string,
+  bg: PropTypes.string,
+  color: PropTypes.string,
+  icon: PropTypes.node,
+  text: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default AppButton;

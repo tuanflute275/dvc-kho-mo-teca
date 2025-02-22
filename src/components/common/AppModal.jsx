@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
+import PropTypes from 'prop-types';
 
 const AppModal = ({ type, name, title, width, footer, children }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,6 +33,15 @@ const AppModal = ({ type, name, title, width, footer, children }) => {
       </Modal>
     </>
   );
+};
+
+AppModal.propTypes = {
+  type: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  footer: PropTypes.oneOfType([PropTypes.array, PropTypes.node, PropTypes.bool]),
+  children: PropTypes.node
 };
 
 export default AppModal;
