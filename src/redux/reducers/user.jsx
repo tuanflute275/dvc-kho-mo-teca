@@ -1,24 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  decryptCustom,
-  encryptCustom,
-  isNullOrEmpty,
-} from "~/utils/helper";
+import { decryptCustom, encryptCustom, isNullOrEmpty } from "~/utils/helper";
 
-let userData;
-const encryptedUser = localStorage.getItem("user");
-
-if (isNullOrEmpty(encryptedUser)) {
-  userData = {};
-} else {
+const getUserData = () => {
+  const encryptedUser = localStorage.getItem("user");
+  if (isNullOrEmpty(encryptedUser)) {
+    return {};
+  }
   try {
     const decryptedUser = decryptCustom(encryptedUser);
-    userData = decryptedUser ? JSON.parse(decryptedUser) : {};
+    return decryptedUser ? JSON.parse(decryptedUser) : {};
   } catch (error) {
     console.error("Lỗi giải mã user:", error);
-    userData = {};
+    return {};
   }
-}
+};
 
 const setUserData = (item) => {
   try {
@@ -29,10 +24,10 @@ const setUserData = (item) => {
   }
 };
 
-const tokenData =
-  localStorage.getItem("token") !== null
-    ? JSON.parse(localStorage.getItem("token"))
-    : {};
+const getTokenData = () => {
+  const token = localStorage.getItem("token");
+  return token ? JSON.parse(token) : {};
+};
 
 const setTokenData = (item) => {
   localStorage.setItem("token", JSON.stringify(item));
@@ -43,11 +38,8 @@ const clearDataLocalStorage = () => {
 };
 
 const initState = {
-  user: userData,
-};
-
-const initToken = {
-  token: tokenData,
+  user: getUserData(),
+  token: getTokenData(),
 };
 
 export const userSlice = createSlice({
@@ -58,27 +50,29 @@ export const userSlice = createSlice({
       state.user = action.payload;
       setUserData(state.user);
     },
-    getUser: (state, action) => {
-      return {
-        ...state.user,
-      };
+    getUser(state) {
+      return state.user;
     },
-    reset: () => initState,
-    //token
+    reset(state) {
+      state.user = {};
+      setUserData(state.user);
+    },
     setToken(state, action) {
       state.token = action.payload;
-      console.log(state);
       setTokenData(state.token);
     },
-    getToken: (state, action) => {
-      return {
-        ...state.token,
-      };
+    getToken(state) {
+      return state.token;
     },
-    clearData: (state, action) => {
+    clearData(state) {
       clearDataLocalStorage();
+      state.user = {};
+      state.token = {};
     },
-    resetToken: () => initToken,
+    resetToken(state) {
+      state.token = {};
+      setTokenData(state.token);
+    },
   },
 });
 

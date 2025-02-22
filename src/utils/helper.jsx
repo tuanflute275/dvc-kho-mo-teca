@@ -143,7 +143,7 @@ export function GetValueEnviroment(key, isDecrypt = true) {
   return value;
 }
 
-export function decryptCustom (cipherText)  {
+export function decryptCustom(cipherText) {
   const encryptionKey = "S6|d'qc1GG,'rx&xn0XC";
   const saltHex = "4976616e204d65647665646576";
   if (!cipherText || cipherText.trim() === "") {
@@ -185,22 +185,22 @@ export function decryptCustom (cipherText)  {
   }
 };
 
-export function encryptCustom (plainText) {
+export function encryptCustom(plainText) {
   const encryptionKey = "S6|d'qc1GG,'rx&xn0XC";
   const saltHex = "4976616e204d65647665646576";
   if (!plainText || plainText.trim() === "") {
     return "";
-}
+  }
 
-try {
+  try {
     // Convert salt from hex to word array
     const salt = CryptoJS.enc.Hex.parse(saltHex);
 
     // Derive key and IV using PBKDF2
     const keyAndIV = CryptoJS.PBKDF2(encryptionKey, salt, {
-        keySize: 48 / 4, // 48 bytes (32 bytes key + 16 bytes IV)
-        iterations: 1000,
-        hasher: CryptoJS.algo.SHA1,
+      keySize: 48 / 4, // 48 bytes (32 bytes key + 16 bytes IV)
+      iterations: 1000,
+      hasher: CryptoJS.algo.SHA1,
     });
 
     const key = CryptoJS.lib.WordArray.create(keyAndIV.words.slice(0, 8));  // 32 bytes key
@@ -208,16 +208,16 @@ try {
 
     // Encrypt using AES-256-CBC
     const encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf16LE.parse(plainText), key, {
-        iv: iv,
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7,
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7,
     });
 
     return CryptoJS.enc.Base64.stringify(encrypted.ciphertext);
-} catch (error) {
+  } catch (error) {
     console.error("Encryption failed:", error);
     return "";
-}
+  }
 };
 
 
@@ -297,4 +297,68 @@ export const validateFormHelper = (data, rules) => {
   });
 
   return errors;
+};
+
+/**
+ * So sánh hai số thực để kiểm tra xem chúng có bằng nhau hay không, với độ chính xác cao.
+ *
+ * Cách hoạt động:
+ * - Hàm này dùng để so sánh hai số `a` và `b`.
+ * - Trong JavaScript, số dấu phẩy động (floating-point numbers) có thể gây ra lỗi chính xác khi so sánh trực tiếp bằng `===`.
+ * - Thay vì so sánh trực tiếp, kiểm tra khoảng cách giữa hai số bằng `Math.abs(a - b) < Number.EPSILON`.
+ * - `Number.EPSILON` là một giá trị rất nhỏ (~2.22e-16), giúp đảm bảo rằng hai số gần nhau được coi là bằng nhau.
+ *
+ * @param {number} a - Số thứ nhất cần so sánh.
+ * @param {number} b - Số thứ hai cần so sánh.
+ * @returns {boolean} - Trả về `true` nếu hai số gần như bằng nhau, ngược lại trả về `false`.
+ *
+ * @example
+ * compareNumbers(0.1 + 0.2, 0.3); // true (vì 0.1 + 0.2 không chính xác bằng 0.3)
+ * compareNumbers(5, 5.0000000001); // true (vì sự khác biệt rất nhỏ)
+ * compareNumbers(5, 6); // false (vì hai số khác nhau rõ ràng)
+ */
+const compareNumbers = (a, b) => {
+  return Math.abs(a - b) < Number.EPSILON;
+};
+
+/**
+ * So sánh hai chuỗi theo thứ tự từ điển mà không phân biệt chữ hoa chữ thường.
+ *
+ * @param {string} a - Chuỗi thứ nhất cần so sánh.
+ * @param {string} b - Chuỗi thứ hai cần so sánh.
+ * @returns {boolean} - Trả về `true` nếu hai chuỗi giống nhau, ngược lại trả về `false`.
+ *
+ * @example
+ * compareStrings("hello", "hello"); // true
+ * compareStrings("Hello", "hello"); // true
+ * compareStrings("apple", "banana"); // false
+ */
+const compareStrings = (a, b) => {
+  return a.localeCompare(b) === 0;
+};
+
+/**
+ * So sánh hai giá trị bất kỳ (số hoặc chuỗi).
+ *
+ * - Nếu cả hai là số, sử dụng `compareNumbers`.
+ * - Nếu cả hai là chuỗi, sử dụng `compareStrings`.
+ * - Nếu không cùng kiểu dữ liệu, trả về `false`.
+ *
+ * @param {string|number} a - Giá trị đầu tiên cần so sánh.
+ * @param {string|number} b - Giá trị thứ hai cần so sánh.
+ * @returns {boolean} - Trả về `true` nếu hai giá trị bằng nhau, ngược lại trả về `false`.
+ *
+ * @example
+ * compareValues(0.1 + 0.2, 0.3); // true
+ * compareValues("Hello", "hello"); // true
+ * compareValues(5, "5"); // false
+ */
+export const compareValues = (a, b) => {
+  if (typeof a === "number" && typeof b === "number") {
+    return compareNumbers(a, b);
+  }
+  if (typeof a === "string" && typeof b === "string") {
+    return compareStrings(a, b);
+  }
+  return false;
 };
