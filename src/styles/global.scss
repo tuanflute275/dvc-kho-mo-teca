@@ -1,0 +1,15 @@
+@import "./base";
+@import "./mixins";
+@import "./variables";
+@import "./components/user.scss";
+@import "./pages/login.scss";
+
+.content {
+  // text-align: center;
+  // min-height: 120px;
+  // line-height: 120px;
+  // color: #fff;
+  // & {
+  //   color: #43cd20;
+  // }
+}
