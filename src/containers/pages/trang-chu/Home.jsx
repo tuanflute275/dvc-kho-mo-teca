@@ -1,19 +1,19 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./home.scss";
-import { AppButton, AppInput, AppModal } from "../../../components/common";
+import { AppButton, AppInput, AppModal } from "~/components/common";
 import { useNavigate } from "react-router-dom";
-import { validateFormHelper } from "../../../utils/helper";
-import { useTranslate } from "../../../context/LanguageContext";
+import { validateFormHelper } from "~/utils/helper";
+import { useTranslate } from "~/context/LanguageContext";
 
-import { exportDataToFile } from "../../../utils/exportHelper";
+import { exportDataToFile } from "~/utils/exportHelper";
 import {
   TYPE_CSV,
   TYPE_JSON,
   TYPE_PDF,
   TYPE_XLSX,
   TYPE_XML,
-} from "../../../utils/constants";
-import useNotifyHelper from "../../../hooks/useNotifyHelper";
+} from "~/utils/constants";
+import useNotifyHelper from "~/hooks/useNotifyHelper";
 
 const Home = () => {
   // call API default value

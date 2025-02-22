@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./login.scss";
 import { useNavigate } from "react-router-dom";
-import * as AuthServices from "../../../services/AuthService";
+import * as AuthServices from "~/services/AuthService";
 import { useDispatch } from "react-redux";
-import { setToken, setUser } from "../../../redux/reducers/user";
+import { setToken, setUser } from "~/redux/reducers/user";
 import { Button, Checkbox, Flex, Form, Input, Modal, Typography } from "antd";
 
 function Login() {

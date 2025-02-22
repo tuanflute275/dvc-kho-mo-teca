@@ -3,7 +3,7 @@ import {
   decryptCustom,
   encryptCustom,
   isNullOrEmpty,
-} from "../../utils/helper";
+} from "~/utils/helper";
 
 let userData;
 const encryptedUser = localStorage.getItem("user");

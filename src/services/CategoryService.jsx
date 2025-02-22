@@ -1,5 +1,5 @@
-import { API_URI } from "../utils/constants";
-import * as http from "../utils/httpCommon";
+import { API_URI } from '~/utils/constants';
+import * as http from '~/utils/httpCommon';
 
 export const findAll = async () => {
   try {
@@ -27,4 +27,3 @@ export const save = async (data) => {
     return [null, error];
   }
 };
-

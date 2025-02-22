@@ -70,6 +70,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
+# Extension 
+
+    Prettier - Code formatter
+
+    ES7 React/Redux/GraphQL/React-Native snippets
+
 # Ant design
 
   > https://ant.design/components/overview/
