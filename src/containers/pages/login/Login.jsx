@@ -5,60 +5,31 @@ import * as AuthServices from "~/services/AuthService";
 import { useDispatch } from "react-redux";
 import { setToken, setUser } from "~/redux/reducers/user";
 import { Button, Checkbox, Flex, Form, Input, Modal, Typography } from "antd";
+import { setPermissions } from "~/redux/reducers/permission";
+import { compareValues } from "~/utils/helper";
 
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const onFinish = async (values) => {
     console.log("Success:", values);
 
-    if (values.username == "admin" && values.password == "Admin@Teca2025") {
+    if (compareValues(values.username, "admin") && compareValues(values.password, "Admin@Teca2025")) {
+
       const dataUser = {
         id: 1,
         username: "admin",
         fullname: "TECAPRO",
         email: "admin-teca@gmail.com",
       };
-      localStorage.setItem("permissions", JSON.stringify(["delete_data", "update_data", "get_data"]));
+
       dispatch(setUser(dataUser));
       const defaultPermissions = ["submit_data", "edit_data"];
-      localStorage.setItem("permissions", JSON.stringify(defaultPermissions));
+      // localStorage.setItem("permissions", JSON.stringify(defaultPermissions));
+      dispatch(setPermissions(defaultPermissions));
       navigate("/");
     }
-
-    // const [result, error] = await AuthServices.login(values);
-    // if (result) {
-    //   console.log(result);
-    //   dispatch(setUser(result.data.user));
-    //   dispatch(setToken(result.data.jwtToken));
-
-    //   let role = result.data.user.role[0].roleName;
-    //   if (role === "Admin") {
-    //     navigate("/admin");
-    //   } else if (role === "User") {
-    //     navigate("/");
-    //   } else {
-    //     navigate("/");
-    //   }
-
-    //   Swal.fire({
-    //     position: "top-end",
-    //     icon: "success",
-    //     title: "Successfully",
-    //     showConfirmButton: false,
-    //     timer: 1500,
-    //   });
-    // }
-    // if (error) {
-    //   Swal.fire({
-    //     position: "top-end",
-    //     icon: "error",
-    //     title: "Failed",
-    //     showConfirmButton: false,
-    //     timer: 1500,
-    //   });
-    //   console.log(error);
-    // }
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);

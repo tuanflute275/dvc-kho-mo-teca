@@ -2,6 +2,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { appRoutes } from '~/routes/Routes';
 import { useSelector } from 'react-redux';
 import { selectUserData } from '~/redux/reducers/user';
+import { selectPermissionData } from '~/redux/reducers/permission';
 import { LanguageProvider } from '~/context/LanguageContext';
 
 const ProtectedRoute = ({ isAuthenticated, children, path, permissions = [] }) => {
@@ -23,15 +24,17 @@ const ProtectedRoute = ({ isAuthenticated, children, path, permissions = [] }) =
 
 function App() {
   const userData = useSelector(selectUserData);
+  const userPermissions = useSelector(selectPermissionData);
   const isAuthenticated = userData?.user?.id;
+
+
 
   const checkPermissions = (route) => {
     if (!route.can) {
       return true;
     }
-
-    const userPermissions = JSON.parse(localStorage.getItem('permissions') || '[]');
-    return route.can.some((permission) => userPermissions.includes(permission));
+    console.log(route.can.some((permission) => userPermissions?.permissions?.includes(permission)))
+    return route.can.some((permission) => userPermissions?.permissions?.includes(permission));
   };
 
   return (

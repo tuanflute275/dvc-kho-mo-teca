@@ -8,6 +8,9 @@ import './home.scss';
 import { helper } from '~/utils';
 import { exportData } from '~/utils';
 import { constants } from '~/utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectPermissionData } from '~/redux/reducers/permission';
+import { compareValues } from '~/utils/helper';
 
 const Home = () => {
   // call API default value
@@ -19,11 +22,14 @@ const Home = () => {
   };
 
   const navigate = useNavigate();
+
   const [postData, setPostData] = useState(initData);
   const [errors, setErrors] = useState({});
   const { t, language, setLanguage } = useTranslate();
   const [permissions, setPermissions] = useState([]);
   const { notifyHelper, notifyComponent } = useNotifyHelper();
+
+  const storedPermissions = useSelector(selectPermissionData);
 
   const handleChangeValue = (e) => {
     const { name, value } = e.target;
@@ -79,8 +85,7 @@ const Home = () => {
     //   console.log("data-email:", element.dataset.email);
     // }
 
-    const storedPermissions = JSON.parse(localStorage.getItem('permissions')) || [];
-    setPermissions(storedPermissions);
+    setPermissions(storedPermissions?.permissions);
   }, []);
 
   const hasPermission = (requiredPermission) => permissions.includes(requiredPermission);
@@ -109,16 +114,16 @@ const Home = () => {
         alignment: { vertical: 'middle', horizontal: 'center' },
       },
     };
-    if (type == 1) {
+    if (compareValues(type, 1)) {
       exportData.exportDataToFile(data, constants.TYPE_JSON);
     }
-    if (type == 2) {
+    if (compareValues(type, 2)) {
       exportData.exportDataToFile(data, constants.TYPE_XML);
     }
-    if (type == 3) {
+    if (compareValues(type, 3)) {
       exportData.exportDataToFile(data, constants.TYPE_CSV);
     }
-    if (type == 4) {
+    if (compareValues(type, 4)) {
       exportData.exportDataToFile(data, constants.TYPE_XLSX, 'dataok', option);
     }
   };
