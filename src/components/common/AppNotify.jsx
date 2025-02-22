@@ -1,6 +1,6 @@
-import { RadiusUprightOutlined } from "@ant-design/icons";
-import { Button, notification } from "antd";
+import { notification } from "antd";
 import React, { useEffect } from "react";
+import PropTypes from 'prop-types';
 
 const AppNotify = (props) => {
   const [api, contextHolder] = notification.useNotification();
@@ -58,5 +58,14 @@ const AppNotify = (props) => {
   });
   return <>{contextHolder}</>;
 };
+
+
+AppNotify.propTypes = {
+  type: PropTypes.oneOf(["success", "info", "warning", "error"]),
+  message: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  placement: PropTypes.oneOf(["topLeft", "topRight", "bottomLeft", "bottomRight"]),
+};
+
 
 export default AppNotify;

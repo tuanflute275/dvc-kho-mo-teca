@@ -1,10 +1,10 @@
 import React from "react";
-import "./header.scss";
+import "./appHeader.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { clearData, selectUserData } from "../../../redux/reducers/user";
+import { clearData, selectUserData } from "~/redux/reducers/user";
 import { Header } from "antd/es/layout/layout";
-import { AppButton } from "../../../components/common";
+import { AppButton } from "~/components/common";
 import { Col, Row } from "antd";
 
 const AppHeader = () => {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./login.scss";
 import { useNavigate } from "react-router-dom";
-import * as AuthServices from "../../../services/AuthService";
+import * as AuthServices from "~/services/AuthService";
 import { useDispatch } from "react-redux";
-import { setToken, setUser } from "../../../redux/reducers/user";
+import { setToken, setUser } from "~/redux/reducers/user";
 import { Button, Checkbox, Flex, Form, Input, Modal, Typography } from "antd";
 
 function Login() {
@@ -21,6 +21,8 @@ function Login() {
       };
       localStorage.setItem("permissions", JSON.stringify(["delete_data", "update_data", "get_data"]));
       dispatch(setUser(dataUser));
+      const defaultPermissions = ["submit_data", "edit_data"];
+      localStorage.setItem("permissions", JSON.stringify(defaultPermissions));
       navigate("/");
     }
 

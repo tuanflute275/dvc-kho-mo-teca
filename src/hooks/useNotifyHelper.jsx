@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AppNotify } from "../components/common";
+import { AppNotify } from "~/components/common";
 
 const useNotifyHelper = () => {
   const [notifyProps, setNotifyProps] = useState(null);
