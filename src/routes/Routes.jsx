@@ -7,6 +7,7 @@ import Page404 from "~/containers/pages/result/Page404";
 import AddCategory from "~/containers/pages/category/add/AddCategory";
 import ListCategory from "~/containers/pages/category/list/ListCategory";
 import EditCategory from "~/containers/pages/category/update/EditCategory";
+import DonVi from "~/containers/pages/DonVi/DonVi";
 
 export const appRoutes = [
   {
@@ -32,6 +33,12 @@ export const appRoutes = [
   {
     path: "/",
     element: <MasterLayout child={<Home />} />,
+    protected: false,
+    can: ["edit_data"]
+  },
+  {
+    path: "/don-vi",
+    element: <MasterLayout child={<DonVi />} />,
     protected: false,
     can: ["edit_data"]
   },

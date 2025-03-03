@@ -3,6 +3,7 @@ import { Input, Select } from 'antd';
 import PropTypes from 'prop-types';
 
 const AppInput = ({
+  className,
   typeInput,
   error,
   disabled,
@@ -17,6 +18,7 @@ const AppInput = ({
   onChange,
   size,
   type,
+  suffix,
   ...restProps
 }) => {
   const showError = error ? { color: 'red' } : {};
@@ -26,6 +28,7 @@ const AppInput = ({
       <>
         <Select
           name={name}
+          className={className}
           placeholder={placeholder}
           mode={multiple ? 'multiple' : undefined}
           showSearch={selectSearch}
@@ -35,6 +38,7 @@ const AppInput = ({
           disabled={disabled}
           onChange={onChange}
           style={{ width: '100%', ...showError }}
+          suffixIcon={suffix}
           {...restProps}
         >
           {data?.map((item) => (
@@ -52,6 +56,7 @@ const AppInput = ({
     <>
       <Input
         name={name}
+        className={className}
         id={name}
         value={value}
         placeholder={placeholder}
@@ -60,6 +65,7 @@ const AppInput = ({
         onChange={onChange}
         disabled={disabled}
         style={showError}
+        suffix={suffix}
         {...restProps}
       />
       {error && <span style={{ color: 'red' }}>{error}</span>}
@@ -70,6 +76,7 @@ const AppInput = ({
 AppInput.propTypes = {
   typeInput: PropTypes.oneOf(['text', 'select']),
   error: PropTypes.string,
+  className: PropTypes.string,
   disabled: PropTypes.bool,
   multiple: PropTypes.bool,
   selectSearch: PropTypes.bool,
@@ -87,5 +94,6 @@ AppInput.propTypes = {
   onChange: PropTypes.func,
   size: PropTypes.oneOf(['small', 'middle', 'large']),
   type: PropTypes.string,
+  suffix: PropTypes.node,
 };
 export default AppInput;

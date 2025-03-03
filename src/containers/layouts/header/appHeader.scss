@@ -1,10 +1,17 @@
 .header {
   text-align: center;
   color: #fff;
-  height: 64px;
-  line-height: 64px;
-  background-color: #c51a5f;
-  &:hover{
-    color: rgb(34, 233, 27);
-  }
+  height: 50px;
+  line-height: 50px;
+  // background-color: #c51a5f;
+  background-image: url('https://dichvucong.gov.vn/p/home/theme/img/home/banner.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  // &:hover {
+  //   color: rgb(34, 233, 27);
+  // }
+}
+
+.header_logo {
+  padding: 0;
 }

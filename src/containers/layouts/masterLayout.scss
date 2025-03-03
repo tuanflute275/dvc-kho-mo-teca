@@ -6,10 +6,10 @@
   width: calc(50% - 8px);
 }
 
-
 .layout {
-  min-height: 100vh; 
+  min-height: 100vh;
   display: flex;
+  padding: 0;
 }
 
 .layout > .ant-layout {

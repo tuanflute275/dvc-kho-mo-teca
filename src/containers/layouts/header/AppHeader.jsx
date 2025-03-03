@@ -5,7 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { clearData, selectUserData } from "~/redux/reducers/user";
 import { Header } from "antd/es/layout/layout";
 import { AppButton } from "~/components/common";
-import { Col, Row } from "antd";
+import { Avatar, Col, Image, Row } from "antd";
+import banner from "~/assets/Quoc_Huy_Viet_Nam_Chuan.png";
 
 const AppHeader = () => {
   const userData = useSelector(selectUserData);
@@ -39,14 +40,18 @@ const AppHeader = () => {
   return (
     <Header className="header">
       <Row justify="space-between">
-        <Col span={6}>
-          <p>Header1 111{userData.user.fullname ?? "okeee"}</p>
+        <Col span={6} flex={1}>
+          {/* <p>Header1 111{userData.user.fullname ?? "okeee"}</p> */}
+          <Avatar
+            src={banner}
+            className="header_logo"
+          />
         </Col>
 
         <Col span={6}>
           <AppButton
-            type="primary"
-            text="Đăng xuất"
+            type="default"
+            text="Đăng Nhập"
             onClick={() => handleLogout()}
           />
         </Col>

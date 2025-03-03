@@ -1,6 +1,5 @@
 import React from 'react';
 import { Flex, Layout } from 'antd';
-import SideBar from './sidebar/SideBar';
 import AppFooter from './footer/AppFooter';
 import AppHeader from './header/AppHeader';
 import './masterLayout.scss';
@@ -11,7 +10,7 @@ const MasterLayout = ({ child }) => {
   return (
     <Flex gap="middle" wrap>
       <Layout className="layout">
-        <SideBar></SideBar>
+        {/* <SideBar></SideBar> */}
         <Layout>
           <AppHeader></AppHeader>
           <Content style={{ flex: 1 }}>{React.Children.only(child)}</Content>

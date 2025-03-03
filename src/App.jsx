@@ -24,8 +24,10 @@ const ProtectedRoute = ({ isAuthenticated, children, path, permissions = [] }) =
 
 function App() {
   const userData = useSelector(selectUserData);
-  const userPermissions = useSelector(selectPermissionData);
+  const userPermissions = useSelector(selectPermissionData).permissions ?? "[]";
   const isAuthenticated = userData?.user?.id;
+
+  console.log(userPermissions);
 
 
 
@@ -33,8 +35,8 @@ function App() {
     if (!route.can) {
       return true;
     }
-    console.log(route.can.some((permission) => userPermissions?.permissions?.includes(permission)))
-    return route.can.some((permission) => userPermissions?.permissions?.includes(permission));
+    console.log(route.can.some((permission) => userPermissions.includes(permission)))
+    return route.can.some((permission) => userPermissions.includes(permission));
   };
 
   return (
