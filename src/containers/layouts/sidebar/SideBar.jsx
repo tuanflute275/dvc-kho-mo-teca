@@ -4,9 +4,10 @@ import Sider from "antd/es/layout/Sider";
 
 const SideBar = () => {
   return (
-    <Sider width="20%" className="sidebar">
-      SideBar
-    </Sider>
+    // <Sider width="25%" className="sidebar">
+    //   SideBar
+    // </Sider>
+    <></>
   );
 };
 

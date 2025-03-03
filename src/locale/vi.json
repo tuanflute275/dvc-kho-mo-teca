@@ -82,14 +82,8 @@
     }
   },
 
-  "home": {
-    "TitleForm": "Mẫu Form",
-    "BtnSubmit": "Gửi dữ liệu",
-    "PlNhapTen": "Nhập tên",
-    "PlNhapEmail": "Nhập email",
-    "PlNhapMK": "Nhập mật khẩu",
-    "TenEmpty": "Tên không được bỏ trống",
-    "EmailEmpty": "Email không được bỏ trống",
-    "PassEmpty": "Mật khẩu không được bỏ trống"
+  "trangChu": {
+    "tieuDe": "Cổng dữ liệu mở",
+    "dangNhap": "Đăng nhập"
   }
 }

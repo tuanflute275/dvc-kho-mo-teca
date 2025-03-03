@@ -14,17 +14,6 @@ $gray-800: #343a40;
 $gray-900: #313a46;
 $black:    #000;
 
-$grays: (
-  "100": $gray-100,
-  "200": $gray-200,
-  "300": $gray-300,
-  "400": $gray-400,
-  "500": $gray-500,
-  "600": $gray-600,
-  "700": $gray-700,
-  "800": $gray-800,
-  "900": $gray-900
-);
 
 
 // color
@@ -38,22 +27,6 @@ $yellow:     #f9c45c;
 $green:      #6ac75a;
 $teal:       #02bc9c;
 $cyan:       #67baf1;
-
-$colors: (
-  "blue":       $blue,
-  "indigo":     $indigo,
-  "pink":       $pink,
-  "red":        $red,
-  "orange":     $orange,
-  "yellow":     $yellow,
-  "green":      $green,
-  "teal":       $teal,
-  "cyan":       $cyan,
-  "black":      $black,
-  "white":      $white,
-  "gray":       $gray-600,
-  "gray-dark":  $gray-800
-);
 
 
 $blue-100: tint-color($blue, 80%);

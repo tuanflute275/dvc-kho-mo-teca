@@ -14,6 +14,7 @@ const AppInput = ({
     value,
     placeholder,
     name,
+    className,
     onChange,
     size,
     type,
@@ -26,6 +27,8 @@ const AppInput = ({
             <>
                 <Select
                     name={name}
+                    id={name}
+                    className={className}
                     placeholder={placeholder}
                     mode={multiple ? 'multiple' : undefined}
                     showSearch={selectSearch}
@@ -53,6 +56,7 @@ const AppInput = ({
             <Input
                 name={name}
                 id={name}
+                className={className}
                 value={value}
                 placeholder={placeholder}
                 size={size || ''}
@@ -84,6 +88,8 @@ AppInput.propTypes = {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array]),
     placeholder: PropTypes.string,
     name: PropTypes.string,
+    className: PropTypes.string,
+    id: PropTypes.string,
     onChange: PropTypes.func,
     size: PropTypes.oneOf(['small', 'middle', 'large']),
     type: PropTypes.string,
