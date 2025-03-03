@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 
 // khi cần call API get dữ liệu từ server mà không cần đẩy vào Redux hoặc 1 state

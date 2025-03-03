@@ -1,1 +1,1 @@
-export { default as ViewPDF } from "./khoMo/ViewPDF";
+export { default as ViewPDF } from './khoMo/ViewPDF';

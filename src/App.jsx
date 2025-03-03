@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectUserData } from '~/redux/reducers/user';
 import { LanguageProvider } from '~/context/LanguageContext';
 
+
 const ProtectedRoute = ({ isAuthenticated, children, path, permissions = [] }) => {
     if (!isAuthenticated) {
         return <Navigate to="/login" />;

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 export default function useHover() {
     const [value, setValue] = useState(false);
@@ -17,7 +17,7 @@ export default function useHover() {
                 };
             }
         },
-        [ref.current] // Xử lý lại lắng nghe event nếu node DOM element thay đổi
+        [ref.current], // Xử lý lại lắng nghe event nếu node DOM element thay đổi
     );
     return [ref, value];
 }

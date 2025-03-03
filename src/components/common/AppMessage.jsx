@@ -2,39 +2,40 @@ import React from 'react';
 import { message } from 'antd';
 import PropTypes from 'prop-types';
 
-const AppMessage = ({ type }) => {
-  const [messageApi, contextHolder] = message.useMessage();
-  const success = () => {
-    messageApi.open({
-      type: 'success',
-      content: 'This is a success message',
-    });
-  };
-  const error = () => {
-    messageApi.open({
-      type: 'error',
-      content: 'This is an error message',
-    });
-  };
-  const warning = () => {
-    messageApi.open({
-      type: 'warning',
-      content: 'This is a warning message',
-    });
-  };
+const AppMessage = ({ type, content }) => {
+    const [messageApi, contextHolder] = message.useMessage();
+    const success = () => {
+        messageApi.open({
+            type: 'success',
+            content: content,
+        });
+    };
+    const error = () => {
+        messageApi.open({
+            type: 'error',
+            content: content,
+        });
+    };
+    const warning = () => {
+        messageApi.open({
+            type: 'warning',
+            content: content,
+        });
+    };
 
-  if (type == 'success') {
-    success();
-  } else if (type == 'error') {
-    error();
-  } else if (type == 'warning') {
-    warning();
-  }
+    if (type === 'success') {
+        success();
+    } else if (type === 'error') {
+        error();
+    } else if (type === 'warning') {
+        warning();
+    }
 
-  return <>{contextHolder}</>;
+    return <>{contextHolder}</>;
 };
 
 AppMessage.propTypes = {
-  type: PropTypes.oneOf(['success', 'error', 'warning']),
+    type: PropTypes.oneOf(['success', 'error', 'warning']),
+    content: PropTypes.string.isRequired,
 };
 export default AppMessage;
