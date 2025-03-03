@@ -3,34 +3,43 @@ import { useState } from 'react';
 import './donVi.scss';
 import { AppButton, AppInput } from '~/components/common';
 import { SearchOutlined } from '@ant-design/icons';
+import DanhSachDuLieu from '~/components/danhSachDuLieu/danhSachDuLieu';
 
 function DonVi() {
     const [tinhThanhCount, setTinhThanhCount] = useState("64");
     const [boBanCount, setBannedCount] = useState("30")
     const locations = [
-        { name: 'Hà nội', count: 1500 },
-        { name: 'Hồ Chí Minh', count: 1500 },
-        { name: 'Đà Nẵng', count: 1500 },
-        { name: 'Hoà Bình', count: 1500 },
-        { name: 'Nam Định', count: 1500 },
-        { name: 'Nha Trang', count: 1500 },
-        { name: 'Đà Lạt', count: 1500 },
-        { name: 'Lâm Đồng', count: 1500 },
+        { title: "Hà Nội", count: 1500 },
+        { title: "Hồ Chí Minh", count: 1500 },
+        { title: "Đà Nẵng", count: 1500 },
+        { title: "Nam Định", count: 1500 },
+        { title: "Nha Trang", count: 1500 },
+        { title: "Hòa Bình", count: 1500 },
+        { title: "Đà Lạt", count: 1500 },
+        { title: "Lâm Đồng", count: 1500 },
+        { title: "Bình Dương", count: 1500 },
+        { title: "Cần Thơ", count: 1500 },
+        { title: "Hải Phòng", count: 1500 },
+        { title: "Thanh Hóa", count: 1500 },
+        { title: "Nghệ An", count: 1500 },
+        { title: "Bắc Ninh", count: 1500 },
+        { title: "Thái Nguyên", count: 1500 },
+        { title: "Bình Thuận", count: 1500 },
     ];
 
     return (
         <>
             <Layout className='search_component' >
                 <Row justify={"space-between"} align={"middle"}>
-                    <Col xs={24} sm={12} md={8} lg={8} xl={8} xxl={2} hidden></Col>
-                    <Col xs={24} sm={12} md={8} lg={8} xl={8} xxl={2} >
+                    <Col xs={24} sm={12} md={8} lg={8} xl={8} xxl={8} hidden></Col>
+                    <Col xs={24} sm={12} md={8} lg={8} xl={8} xxl={8} >
                         <Flex justify={"center"} align={"middle"}>
                             <AppInput type="text" placeholder={"Nhập từ khoá để tìm kiếm"} className={"search_form"} />
                             <AppButton type="primary" className={"submit_search"} icon={<SearchOutlined />} title={"Tìm kiếm"} />
                             {/* <Search placeholder="input search text" allowClear enterButton /> */}
                         </Flex>
                     </Col>
-                    <Col xs={24} sm={12} md={8} lg={8} xl={8} xxl={2} hidden></Col>
+                    <Col xs={24} sm={12} md={8} lg={8} xl={8} xxl={8} hidden></Col>
                 </Row>
             </Layout >
             <Layout className='container'>
@@ -59,6 +68,8 @@ function DonVi() {
                         )}
                     />
                 </Card> */}
+
+                <DanhSachDuLieu data={locations} />
 
 
 
