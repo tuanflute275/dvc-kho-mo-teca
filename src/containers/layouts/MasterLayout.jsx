@@ -13,8 +13,8 @@ const MasterLayout = ({ child }) => {
         {/* <SideBar></SideBar> */}
         <Layout>
           <AppHeader></AppHeader>
-          <Content style={{ flex: 1 }}>{React.Children.only(child)}</Content>
-          <AppFooter></AppFooter>
+          <Content>{React.Children.only(child)}</Content>
+          {/* <AppFooter></AppFooter> */}
         </Layout>
       </Layout>
     </Flex>

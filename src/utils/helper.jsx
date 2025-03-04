@@ -174,11 +174,9 @@ export function decryptCustom(cipherText) {
     // Convert from WordArray to UTF-16LE (fixes extra spaces)
     const decryptedBytes = CryptoJS.enc.Utf8.stringify(decrypted);
     const decoder = new TextDecoder("utf-16le"); // Correct encoding
-    const decryptedText = decoder.decode(
+    return decoder.decode(
       new Uint8Array(decryptedBytes.split("").map((c) => c.charCodeAt(0)))
     );
-
-    return decryptedText;
   } catch (error) {
     console.error("Decryption failed:", error);
     return "";

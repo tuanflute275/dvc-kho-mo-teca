@@ -83,8 +83,7 @@ const Home = () => {
     // let element2 = document.querySelector("[data-email]");
     // if (element2) {
     //   console.log("data-email:", element.dataset.email);
-    // }
-
+    // 
     setPermissions(storedPermissions?.permissions);
   }, []);
 

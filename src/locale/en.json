@@ -81,7 +81,6 @@
       "ChuaCoMucNaoDuocChon": "No item has been selected"
     }
   },
-
   "home": {
     "TitleForm": "Demo Form",
     "BtnSubmit": "Submit Data",
@@ -91,5 +90,11 @@
     "TenEmpty": "Name cannot be empty",
     "EmailEmpty": "Email cannot be empty",
     "PassEmpty": "Password cannot be empty"
+  },
+  "dsDuLieu": {
+    "boDuLieu": "Samples data",
+    "trangTiep": "Next Page",
+    "Trang": "Page",
+    "Cua": "of"
   }
 }

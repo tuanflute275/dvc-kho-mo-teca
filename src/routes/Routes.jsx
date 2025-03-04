@@ -8,6 +8,7 @@ import AddCategory from "~/containers/pages/category/add/AddCategory";
 import ListCategory from "~/containers/pages/category/list/ListCategory";
 import EditCategory from "~/containers/pages/category/update/EditCategory";
 import DonVi from "~/containers/pages/DonVi/DonVi";
+import LinhVuc from "~/containers/pages/LinhVuc/LinhVuc";
 
 export const appRoutes = [
   {
@@ -39,6 +40,12 @@ export const appRoutes = [
   {
     path: "/don-vi",
     element: <MasterLayout child={<DonVi />} />,
+    protected: false,
+    can: ["edit_data"]
+  },
+  {
+    path: "/linh-vuc",
+    element: <MasterLayout child={<LinhVuc />} />,
     protected: false,
     can: ["edit_data"]
   },

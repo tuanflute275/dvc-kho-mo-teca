@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectUserData } from '~/redux/reducers/user';
 import { selectPermissionData } from '~/redux/reducers/permission';
 import { LanguageProvider } from '~/context/LanguageContext';
+import Page404 from './containers/pages/result/Page404';
 
 const ProtectedRoute = ({ isAuthenticated, children, path, permissions = [] }) => {
   if (!isAuthenticated) {
@@ -63,6 +64,7 @@ function App() {
 
           return <Route key={index} path={route.path} element={route.element} />;
         })}
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </LanguageProvider>
   );

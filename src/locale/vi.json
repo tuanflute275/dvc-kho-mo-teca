@@ -81,7 +81,6 @@
       "ChuaCoMucNaoDuocChon": "Chưa có mục nào được chọn"
     }
   },
-
   "home": {
     "TitleForm": "Mẫu Form",
     "BtnSubmit": "Gửi dữ liệu",
@@ -91,5 +90,18 @@
     "TenEmpty": "Tên không được bỏ trống",
     "EmailEmpty": "Email không được bỏ trống",
     "PassEmpty": "Mật khẩu không được bỏ trống"
+  },
+  "dsDuLieu": {
+    "boDuLieu": "Bộ dữ liệu",
+    "trangTiep": "Trang tiếp",
+    "Trang": "Trang",
+    "Cua": "Của",
+    "khongCoDuLieu": {
+      "tieuDe": "Không có dữ liệu",
+      "noiDung": "Hiện tại chưa có dữ liệu nào trong bộ dữ liệu"
+    }
+  },
+  "banner": {
+    "inputEmpty": "Không được để trống"
   }
 }

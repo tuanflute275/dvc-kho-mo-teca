@@ -13,6 +13,7 @@ const AppInput = ({
   valueType,
   valueName,
   value,
+  defaultValue,
   placeholder,
   name,
   onChange,
@@ -60,6 +61,7 @@ const AppInput = ({
         id={name}
         value={value}
         placeholder={placeholder}
+        defaultValue={defaultValue}
         size={size || ''}
         type={type || 'text'}
         onChange={onChange}
@@ -89,6 +91,7 @@ AppInput.propTypes = {
   valueType: PropTypes.string,
   valueName: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array]),
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   placeholder: PropTypes.string,
   name: PropTypes.string,
   onChange: PropTypes.func,
