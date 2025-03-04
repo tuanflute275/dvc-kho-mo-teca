@@ -1,61 +1,61 @@
 import React from 'react';
-import { Col, Layout, Row } from 'antd'; 
+import { Col, Layout, Row } from 'antd';
+import logo from '~/assets/images/logo.png';
 import './appFooter.scss';
 import { FaFax, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { Typography } from 'antd';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useTranslate } from '~/context/LanguageContext';
+
 const { Title, Paragraph } = Typography;
 const { Footer } = Layout;
 
 const AppFooter = () => {
+    const { t } = useTranslate();
     return (
         <Footer className="footer">
             <Row justify="space-between" className="footer-content">
                 <Col xs={24} sm={12} md={6} className="footer-logo">
-                    <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Emblem_of_Vietnam.svg/1200px-Emblem_of_Vietnam.svg.png"
-                        alt="Logo"
-                        className="footer-logo-img"
-                    />
+                    <img src={logo} alt="Logo" className="footer-logo-img" />
                     <Title level={3} className="footer-name">
-                        CỔNG DỮ LIỆU MỞ
+                        {t('app.tieuDe')}
                     </Title>
                 </Col>
 
                 <Col xs={24} sm={12} md={8} className="footer-contact">
                     <Title level={4} className="footer-title">
-                        TRUNG TÂM CHUYỂN ĐỔI SỐ
+                        {t('app.chuyenDoiSo')}
                     </Title>
                     <Paragraph>
-                        <FaMapMarkerAlt /> Địa chỉ: 6/15 Duy Tân, P.Dịch Vọng Hậu, Cầu Giấy, Hà Nội
+                        <FaMapMarkerAlt /> {t('app.diaChi')}
                     </Paragraph>
                     <Paragraph>
-                        <FaPhoneAlt /> Điện thoại: 0322554555 - 0320000022
+                        <FaPhoneAlt /> {t('app.dienThoai')}
                     </Paragraph>
                     <Paragraph>
-                        <FaFax /> Fax: 0322554555 - 0320000022
+                        <FaFax /> {t('app.fax')}
                     </Paragraph>
                     <Paragraph>
-                        <MdEmail /> Email: trungtamdulieu@ttdl.gov.vn
+                        <MdEmail /> {t('app.email')}
                     </Paragraph>
                 </Col>
 
                 <Col xs={24} sm={12} md={6} className="footer-info">
                     <Title level={4} className="footer-title">
-                        THÔNG TIN
+                        {t('app.thongTin')}
                     </Title>
-                    <Link href="/contact" className="footer-link">
-                        Liên hệ
+                    <Link href="/lien-he" className="footer-link">
+                        {t('app.lienHe')}
                     </Link>
-                    <Link href="/about" className="footer-link">
-                        Giới thiệu
+                    <Link href="/gioi-thieu" className="footer-link">
+                        {t('app.gioiThieu')}
                     </Link>
-                    <Link href="/terms" className="footer-link">
-                        Điều khoản sử dụng
+                    <Link href="/dieu-khoan-su-dung" className="footer-link">
+                        {t('app.dieuKhoanSuDung')}
                     </Link>
-                    <Link href="/privacy-policy" className="footer-link">
-                        Chính sách bảo mật
+                    <Link href="/chinh-sach-bao-mat" className="footer-link">
+                        {t('app.chinhSachBaoMat')}
                     </Link>
                 </Col>
             </Row>
@@ -63,7 +63,7 @@ const AppFooter = () => {
             <Row justify="start">
                 <Col xs={24} className="footer-bottom">
                     <div className="footer-container">
-                        <Paragraph className="footer-copyright">© Bản quyền thuộc về BCA</Paragraph>
+                        <Paragraph className="footer-copyright"> {t('app.banQuyen')}</Paragraph>
                     </div>
                 </Col>
             </Row>

@@ -1,106 +1,87 @@
-import { Card, Flex } from 'antd';
+/* eslint-disable jsx-a11y/img-redundant-alt */
+import { Card, Col, Flex, Row } from 'antd';
 import Meta from 'antd/es/card/Meta';
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './trangChu.scss';
+import { useTranslate } from '~/context/LanguageContext';
+import icon from '~/assets/images/icon.jpg';
+import banner from '~/assets/images/bannner1.png';
 
 const TrangChu = () => {
+    const { t } = useTranslate();
     return (
         <>
-            <div className="banner" style={{ height: '350px', background: '#ba6c6c' }}></div>
-            {/* <div style={{ background: '#FFF5E1' }}>
-                <div className="container list-options" style={{ padding: '30px 0' }}>
-                    <Flex justify="center" gap="small">
-                        <a href="/">
+            <div className="banner">
+                <div className="container">
+                    <Row align="middle" justify="center" gutter={[16, 16]}>
+                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                            <div style={{ background: '#ddd', padding: '20px' }}>Cột 1</div>
+                        </Col>
+                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                            <div style={{ background: '#bbb', padding: '20px' }}>Cột 2</div>
+                        </Col>
+                    </Row>
+                </div>
+            </div>
+            <div className="content">
+                <div className="container list-options">
+                    <Flex justify="center" wrap="wrap" gap="small">
+                        <NavLink to={'/don-vi'}>
                             <Card
                                 hoverable
-                                style={{
-                                    width: 240,
-                                    textAlign: 'center',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    paddingTop: '15px',
-                                }}
+                                className="custom-card"
                                 cover={
                                     <div className="icon-view">
-                                        <img
-                                            style={{
-                                                width: '100px',
-                                                textAlign: 'center',
-                                                margin: 'auto',
-                                                borderRadius: '50%',
-                                            }}
-                                            className="image-icon"
-                                            alt="image"
-                                            src="https://i.pinimg.com/564x/f3/53/df/f353df0628bbadd8d478422b7294e89b.jpg"
-                                        />
+                                        <img className="image-icon" alt="image" src={icon} />
                                     </div>
                                 }
                             >
-                                <Meta title="Dữ liệu xem nhiều nhất" />
+                                <Meta title={t('trangChu.duLieuXemNhieuNhat')} />
                             </Card>
-                        </a>
-                        <Card
-                            hoverable
-                            style={{
-                                width: 240,
-                                textAlign: 'center',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                paddingTop: '15px',
-                            }}
-                            cover={
-                                <img
-                                    style={{ width: '100px', textAlign: 'center', margin: 'auto' }}
-                                    className="image-icon"
-                                    alt="image"
-                                    src="https://cdn-icons-png.flaticon.com/512/323/323319.png"
-                                />
-                            }
-                        >
-                            <Meta title="Dữ liệu xem nhiều nhất" />
-                        </Card>
-                        <Card
-                            hoverable
-                            style={{
-                                width: 240,
-                                textAlign: 'center',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                paddingTop: '15px',
-                            }}
-                            cover={
-                                <img
-                                    style={{ width: '100px', textAlign: 'center', margin: 'auto' }}
-                                    className="image-icon"
-                                    alt="image"
-                                    src="https://cdn-icons-png.flaticon.com/512/323/323319.png"
-                                />
-                            }
-                        >
-                            <Meta title="Dữ liệu xem nhiều nhất" />
-                        </Card>
-                        <Card
-                            hoverable
-                            style={{
-                                width: 240,
-                                textAlign: 'center',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                paddingTop: '15px',
-                            }}
-                            cover={
-                                <img
-                                    style={{ width: '100px', textAlign: 'center', margin: 'auto' }}
-                                    className="image-icon"
-                                    alt="image"
-                                    src="https://cdn-icons-png.flaticon.com/512/323/323319.png"
-                                />
-                            }
-                        >
-                            <Meta title="Dữ liệu xem nhiều nhất" />
-                        </Card>
+                        </NavLink>
+                        <NavLink to={'/'}>
+                            <Card
+                                hoverable
+                                className="custom-card"
+                                cover={
+                                    <div className="icon-view">
+                                        <img className="image-icon" alt="image" src={icon} />
+                                    </div>
+                                }
+                            >
+                                <Meta title={t('trangChu.duLieuMoiNhat')} />
+                            </Card>
+                        </NavLink>
+                        <NavLink to={'/'}>
+                            <Card
+                                hoverable
+                                className="custom-card"
+                                cover={
+                                    <div className="icon-view">
+                                        <img className="image-icon" alt="image" src={icon} />
+                                    </div>
+                                }
+                            >
+                                <Meta title={t('trangChu.duLieuTheoLinhVuc')} />
+                            </Card>
+                        </NavLink>
+                        <NavLink to={'/'}>
+                            <Card
+                                hoverable
+                                className="custom-card"
+                                cover={
+                                    <div className="icon-view">
+                                        <img className="image-icon" alt="image" src={icon} />
+                                    </div>
+                                }
+                            >
+                                <Meta title={t('trangChu.duLieuTheoDonVi')} />
+                            </Card>
+                        </NavLink>
                     </Flex>
                 </div>
-            </div> */}
+            </div>
         </>
     );
 };
