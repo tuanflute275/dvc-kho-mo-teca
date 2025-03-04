@@ -10,11 +10,10 @@ const MasterLayout = ({ child }) => {
   return (
     <Flex gap="middle" wrap>
       <Layout className="layout">
-        {/* <SideBar></SideBar> */}
         <Layout>
           <AppHeader></AppHeader>
           <Content>{React.Children.only(child)}</Content>
-          {/* <AppFooter></AppFooter> */}
+          <AppFooter></AppFooter>
         </Layout>
       </Layout>
     </Flex>
@@ -22,6 +21,6 @@ const MasterLayout = ({ child }) => {
 };
 
 MasterLayout.propTypes = {
-    child: PropTypes.node.isRequired,
+  child: PropTypes.node.isRequired,
 };
 export default MasterLayout;
