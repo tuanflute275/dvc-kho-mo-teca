@@ -1,17 +1,20 @@
-import { useHistory, useLocation } from 'react-router-dom';
-import qs from 'query-string';
+import { useLocation, useNavigate } from "react-router-dom";
+import qs from "query-string";
 
 function usePushQueryString() {
-  const location = useLocation();
-  const history = useHistory();
+    const location = useLocation();
+    const navigate = useNavigate();
 
-  function handlePushLocationSearch(data) {
-    const locationSearch = qs.parse(location.search);
+    function handlePushLocationSearch(data) {
+        const locationSearch = qs.parse(location.search); // Lấy query hiện tại
 
-    history.push({ search: `?${qs.stringify({ ...locationSearch, ...data })}` });
- }
+        navigate(
+            { search: `?${qs.stringify({ ...locationSearch, ...data })}` },
+            { replace: true } // Không lưu lịch sử, tránh back lại nhiều lần
+        );
+    }
 
-  return handlePushLocationSearch;
+    return handlePushLocationSearch;
 }
 
 export default usePushQueryString;

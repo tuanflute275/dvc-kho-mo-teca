@@ -22,6 +22,6 @@ const MasterLayout = ({ child }) => {
 };
 
 MasterLayout.propTypes = {
-  child: PropTypes.node.isRequired,
+    child: PropTypes.node.isRequired,
 };
 export default MasterLayout;

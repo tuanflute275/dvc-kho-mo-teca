@@ -6,6 +6,7 @@ import { selectPermissionData } from '~/redux/reducers/permission';
 import { LanguageProvider } from '~/context/LanguageContext';
 import Page404 from './containers/pages/result/Page404';
 
+
 const ProtectedRoute = ({ isAuthenticated, children, path, permissions = [] }) => {
   if (!isAuthenticated) {
     return <Navigate to="/login" />;

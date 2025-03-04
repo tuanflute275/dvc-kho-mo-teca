@@ -16,12 +16,12 @@ const getUserData = () => {
 };
 
 const setUserData = (item) => {
-  try {
-    const dataHash = encryptCustom(JSON.stringify(item));
-    localStorage.setItem("user", dataHash);
-  } catch (error) {
-    console.error("Lỗi mã hóa user:", error);
-  }
+    try {
+        const dataHash = encryptCustom(JSON.stringify(item));
+        localStorage.setItem('user', dataHash);
+    } catch (error) {
+        console.error('Lỗi mã hóa user:', error);
+    }
 };
 
 const getTokenData = () => {
@@ -30,11 +30,11 @@ const getTokenData = () => {
 };
 
 const setTokenData = (item) => {
-  localStorage.setItem("token", JSON.stringify(item));
+    localStorage.setItem('token', JSON.stringify(item));
 };
 
 const clearDataLocalStorage = () => {
-  localStorage.clear();
+    localStorage.clear();
 };
 
 const initState = {
@@ -76,14 +76,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const {
-  setUser,
-  getUser,
-  reset,
-  setToken,
-  getToken,
-  clearData,
-  resetToken,
-} = userSlice.actions;
+export const { setUser, getUser, reset, setToken, getToken, clearData, resetToken } = userSlice.actions;
 export const selectUserData = (state) => state.user;
 export default userSlice.reducer;
