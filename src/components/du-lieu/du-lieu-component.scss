@@ -1,0 +1,68 @@
+.item {
+    border: 1px solid #cccccc;
+    margin-top: 10px !important;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.item label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 15px;
+}
+
+.item label span {
+    margin-left: auto;
+    color: gray;
+}
+
+.item .content {
+    padding: 10px 0;
+    background-color: #f0f0f0;
+}
+
+.item:hover {
+    background-color: #f0f0f0 !important;
+}
+
+.item .date {
+    padding-left: 0 !important;
+    width: 100%;
+}
+
+.item .action {
+    padding-left: 0 !important;
+    padding-top: 5px;
+}
+
+.item .action button {
+    padding: 2px 15px;
+    margin-right: 10px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+//responsive
+@media (max-width: 768px) {
+    .item label {
+        display: block;
+    }
+
+    .item label span {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    button {
+        width: 100px;
+        margin-bottom: 10px;
+    }
+
+    .don-vi {
+        display: block;
+    }
+}

@@ -1,42 +1,119 @@
-import { Col, Layout, Menu, Row } from 'antd';
-import './duLieu.scss';
+import { Button, Col, Layout, Menu, Pagination, Row } from 'antd';
+import duLieuStyle from './duLieu.scss';
+import classNames from 'classnames';
+import ListData from '~/components/du-lieu/du-lieu-component';
+import { useState } from 'react';
+import { ArrowLeftOutlined } from '@ant-design/icons';
 
+const cx = classNames.bind(duLieuStyle);
+
+//sidebar nhiều cấp
+function getItem(className, label, key, children, number) {
+    return {
+        className,
+        key,
+        children,
+        label: (
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+                {label}
+                {number && (
+                    <span className={cx('number')} style={{ marginLeft: '8px' }}>
+                        {number}
+                    </span>
+                )}
+            </div>
+        ),
+    };
+}
+
+//list menu item
+const items = [
+    getItem(cx('parent_menu_item'), 'Đơn vị', 'donvi', [
+        getItem(
+            cx('sub_menu_items'),
+            'Hà Nội',
+            'hanoi',
+            [
+                getItem(cx('sub_menu_item'), 'Sở công thương', 'sct', '', 3),
+                getItem(cx('sub_menu_item'), 'Sở du lịch', 'sdl'),
+            ],
+            1000,
+        ),
+        getItem(
+            cx('sub_menu_items'),
+            'Hồ Chí Minh',
+            'hcm',
+            [getItem(cx('sub_menu_item'), 'Sở công thương', 'sct'), getItem(cx('sub_menu_item'), 'Sở du lịch', 'sdl')],
+            1,
+        ),
+        getItem(cx('sub_menu_items'), 'Hà Giang', 'hagiang', []),
+    ]),
+    getItem(cx('parent_menu_item'), 'Lĩnh vực', 'linhvuc', [
+        getItem(cx('sub_menu_items'), 'Y tế', 'yte', []),
+        getItem(cx('sub_menu_items'), 'Giáo dục', 'giaoduc', []),
+        getItem(cx('sub_menu_items'), 'Môi trường', 'moitruong', []),
+    ]),
+    getItem(cx('parent_menu_item'), 'Định dạng', 'dinhdang', [
+        getItem(cx('sub_menu_items'), 'PDF', 'pdf', []),
+        getItem(cx('sub_menu_items'), 'Excel', 'excel', []),
+        getItem(cx('sub_menu_items'), 'Word', 'word', []),
+        getItem(cx('sub_menu_items'), 'Csv', 'csv', []),
+    ]),
+];
+
+// hàm mở key để hiển thị tất cả menu con
+const getAllSubmenuKeys = (items) => {
+    let keys = [];
+    items.forEach((item) => {
+        keys.push(item.key); // Thêm key của menu cha
+        if (item.children) {
+            item.children.forEach((subItem) => {
+                keys.push(subItem.key); // Thêm key của submenu
+                if (subItem.children) {
+                    subItem.children.forEach((subSubItem) => {
+                        keys.push(subSubItem.key); // Thêm key của submenu con
+                    });
+                }
+            });
+        }
+    });
+    return keys;
+};
+//end Sidebar nhiều cấp
+
+const data = [1, 2, 3, 4, 5];
 
 const DuLieu = () => {
+    const openKeys = getAllSubmenuKeys(items);
     return (
-        <Layout className='container' style={{ padding: 0 }}>
-            <Row gutter={[16, 16]} >
-                <Col span={6}>
-                    <Menu mode="inline" className='sidebar' defaultOpenKeys={["donvi", "linhvuc", "dinhdang"]}>
-                        {/* Đơn vị */}
-                        <Menu.SubMenu key="donvi" title="Đơn vị" className='parent_menu_item'>
-                            <Menu.SubMenu key="hanoi" title="Hà Nội" className='sub_menu_item'>
-                                <Menu.Item key="sct" className='sub_menu_item'>Sở công thương</Menu.Item>
-                                <Menu.Item key="sdl" className='sub_menu_item'>Sở du lịch</Menu.Item>
-                            </Menu.SubMenu>
-                            <Menu.Item key="hcm" className='sub_menu_item' >Hồ Chí Minh</Menu.Item>
-                            <Menu.Item key="hagiang" className='sub_menu_item'>Hà Giang</Menu.Item>
-                        </Menu.SubMenu>
-
-                        {/* Lĩnh vực */}
-                        <Menu.SubMenu key="linhvuc" title="Lĩnh vực" className='parent_menu_item'>
-                            <Menu.Item key="yte" className='sub_menu_item'>Y tế</Menu.Item>
-                            <Menu.Item key="giaoduc" className='sub_menu_item'>Giáo dục</Menu.Item>
-                            <Menu.Item key="moitruong" className='sub_menu_item'>Môi trường</Menu.Item>
-                        </Menu.SubMenu>
-
-                        {/* Định dạng */}
-                        <Menu.SubMenu key="dinhdang" title="Định dạng" className='parent_menu_item'>
-                            <Menu.Item key="pdf" className='sub_menu_item'>PDF</Menu.Item>
-                            <Menu.Item key="excel" className='sub_menu_item'>Excel</Menu.Item>
-                            <Menu.Item key="word" className='sub_menu_item'>Word</Menu.Item>
-                            <Menu.Item key="csv" className='sub_menu_item'>Csv</Menu.Item>
-                        </Menu.SubMenu>
-                    </Menu>
+        <Layout className={cx('container')}>
+            <Row gutter={[16, 16]}>
+                <Col span={6} className={cx('sidebar')}>
+                    <Menu defaultOpenKeys={openKeys} mode="inline" items={items} />
                 </Col>
-                <Col span={18}>
-                    <p>Col 2</p>
-
+                <Col span={18} className={cx('main')}>
+                    <div className={cx('link')}>
+                        <a>Trang chủ </a> >> <a> Dữ liệu tìm kiếm </a>
+                    </div>
+                    <div className={cx('title')}>
+                        <span>500</span> bộ dữ liệu được tìm thấy
+                    </div>
+                    <div className={cx('list')}>
+                        {data.map((item) => (
+                            <ListData key={item} data={item} />
+                        ))}
+                    </div>
+                    {/* <div className={cx('pagination')}>
+                        <div className="page-none"></div>
+                        <div className="page-center">
+                            <Button icon={<ArrowLeftOutlined />} className={cx('arrow-left')}></Button>
+                            <Button className={cx('next')}>Trang tiếp</Button>
+                        </div>
+                        <div className={cx('page')}>
+                            Trang <input type="number" min={1} />
+                            <span>Của 15</span>
+                        </div>
+                    </div> */}
                 </Col>
             </Row>
         </Layout>
