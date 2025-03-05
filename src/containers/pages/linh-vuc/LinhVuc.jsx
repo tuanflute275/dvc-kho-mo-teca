@@ -43,6 +43,9 @@ function LinhVuc() {
     }
 
     useEffect(() => {
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100);
         setCount(data.length)
     }, [searchData])
 

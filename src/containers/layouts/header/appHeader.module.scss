@@ -1,9 +1,18 @@
-@use '../../../styles/variables' as *;
+@import '../../../styles/variables';
 
 .container {
     max-width: 80%;
     margin: 0 auto;
     background-color: #ffffff;
+}
+
+.btn-login {
+    :global(.ant-btn-variant-outlined) {
+        &:hover {
+            border-color: rgb(215, 25, 32) !important;
+            color: #b22222 !important;
+        }
+    }
 }
 
 .header {
@@ -42,24 +51,47 @@
     }
 
     .language-select {
-        width: 40px !important;
-        height: 32px;
         border: none !important;
-        background: transparent !important;
+        background-color: #fff5e1 !important;
 
         .ant-select-arrow {
             left: 30px !important;
             right: auto !important;
         }
 
+        :global(.ant-select-selector) {
+            border: none !important;
+            background-color: #fff5e1 !important;
+            &:active {
+                border-color: #fff5e1 !important;
+                box-shadow: none;
+                outline: unset !important;
+                border: none !important;
+            }
+
+            &:focus-visible {
+                border-color: #fff5e1 !important;
+                box-shadow: none;
+                outline: unset !important;
+                border: none !important;
+            }
+
+            &:focus {
+                border-color: #fff5e1 !important;
+                box-shadow: none;
+                outline: unset !important;
+                border: none !important;
+            }
+        }
+
         .ant-select-selector {
             border: none !important;
+            background-color: transparent !important;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 0 !important;
             box-shadow: none !important;
-            background-color: transparent;
         }
 
         .flag-icon {
@@ -67,7 +99,8 @@
             height: 24px;
             border-radius: 50%;
             display: block;
-            margin: auto;
+            margin: 0;
+            padding: 0;
         }
 
         .ant-select-dropdown {
@@ -264,6 +297,18 @@
         display: none;
     }
     .mobile-menu-button {
+        :global(.ant-btn-variant-solid) {
+            color: #000;
+            content: '';
+            &:focus {
+                background-color: transparent !important;
+                color: #000 !important;
+            }
+            &:hover {
+                background-color: transparent !important;
+                color: #000 !important;
+            }
+        }
         display: block;
         position: absolute;
         right: 20px;

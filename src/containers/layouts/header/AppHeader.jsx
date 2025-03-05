@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Header } from 'antd/es/layout/layout';
 import { AppButton } from '~/components/common';
-import { Row, Col, Select, Drawer, Button, Flex } from 'antd';
+import { Row, Col, Select, Drawer, Button, Flex, Avatar } from 'antd';
 import { useTranslate } from '~/context/LanguageContext';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { MenuOutlined } from '@ant-design/icons';
@@ -20,9 +20,9 @@ const AppHeader = () => {
     const navigate = useNavigate();
 
     const languageOptions = [
-        { value: 'vi', label: <img src={viIcon} alt="Vietnamese" className="flag-icon" /> },
-        { value: 'en', label: <img src={enIcon} alt="English" className="flag-icon" /> },
-        { value: 'zh', label: <img src={zhIcon} alt="Chinese" className="flag-icon" /> },
+        { value: 'vi', label: <Avatar src={viIcon} alt="Vietnamese" className={cx("flag-icon")} /> },
+        { value: 'en', label: <Avatar src={enIcon} alt="English" className={cx("flag-icon")} /> },
+        { value: 'zh', label: <Avatar src={zhIcon} alt="Chinese" className={cx("flag-icon")} /> },
     ];
 
     const handleNavigateLogin = () => {
@@ -44,15 +44,15 @@ const AppHeader = () => {
                             </Col>
 
                             <Col xs={24} sm={12} md={8} className={cx("header-right")}>
-                                <Row justify="center" align="middle" gutter={[10, 10]}>
+                                <Row justify="center" align="middle">
                                     <div className={cx("flag-header")}>
-                                        <Col>
+                                        <Col className={cx("reset")}>
                                             <Select
                                                 defaultValue={language}
                                                 onChange={setLanguage}
                                                 className={cx("language-select")}
                                                 options={languageOptions}
-                                                dropdownMatchSelectWidth={false}
+                                                popupMatchSelectWidth={false}
                                             />
                                         </Col>
                                     </div>
@@ -80,7 +80,7 @@ const AppHeader = () => {
                                     <h2 className={cx("header-title")}>{t('app.tieuDe')}</h2>
                                 </div>
                             </Col>
-                            <Col xs={6} sm={6} md={6} className="mobile-menu-button">
+                            <Col xs={6} sm={6} md={6} className={cx("mobile-menu-button")}>
                                 <Button type="primary" icon={<MenuOutlined />} onClick={() => setOpen(true)} />
                             </Col>
 
@@ -137,20 +137,20 @@ const AppHeader = () => {
                     </div>
                 </div>
                 <Drawer title="Danh mục" placement="right" onClose={() => setOpen(false)} open={open}>
-                    <nav className="menu-mobile">
-                        <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
+                    <nav className={cx("menu-mobile")}>
+                        <NavLink to="/" className={({ isActive }) => (isActive ? cx('active') : '')}>
                             {t('app.trangChu')}
                         </NavLink>
-                        <NavLink to="/du-lieu" className={({ isActive }) => (isActive ? 'active' : '')}>
+                        <NavLink to="/du-lieu" className={({ isActive }) => (isActive ? cx('active') : '')}>
                             {t('app.duLieu')}
                         </NavLink>
-                        <NavLink to="/don-vi" className={({ isActive }) => (isActive ? 'active' : '')}>
+                        <NavLink to="/don-vi" className={({ isActive }) => (isActive ? cx('active') : '')}>
                             {t('app.donVi')}
                         </NavLink>
-                        <NavLink to="/linh-vuc" className={({ isActive }) => (isActive ? 'active' : '')}>
+                        <NavLink to="/linh-vuc" className={({ isActive }) => (isActive ? cx('active') : '')}>
                             {t('app.linhVuc')}
                         </NavLink>
-                        <NavLink to="/tin-tuc" className={({ isActive }) => (isActive ? 'active' : '')}>
+                        <NavLink to="/tin-tuc" className={({ isActive }) => (isActive ? cx('active') : '')}>
                             {t('app.tinTuc')}
                         </NavLink>
                         <div className="btn-login-mobile">

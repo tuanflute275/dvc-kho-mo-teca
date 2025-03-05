@@ -2,7 +2,7 @@
     background-image: url('../../../assets/images/banner.jpg');
     background-size: cover;
     background-clip: border-box;
-    padding: 40px;
+    padding: 30%;
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
@@ -32,12 +32,17 @@
         justify-content: center;
         color: white;
         padding: 0 16px;
+        max-width: 50%;
+        text-align: justify;
 
         .landing-title {
             color: white;
-            font-size: 2.5rem;
+            font-size: 33px;
             margin-bottom: 16px;
-
+            text-transform: uppercase;
+            .count {
+                color: rgb(255, 206, 0);
+            }
             @media (max-width: 768px) {
                 font-size: 2rem;
             }
@@ -45,7 +50,7 @@
 
         .landing-subtitle {
             color: white;
-            font-size: 1.25rem;
+            font-size: 15px;
             margin-bottom: 16px;
 
             @media (max-width: 768px) {
@@ -54,14 +59,66 @@
         }
 
         .open-data-description {
+            position: relative;
             background-color: rgba(255, 255, 255, 0.2);
             padding: 16px;
-            border-radius: 8px;
+            border-radius: 8px; // Vẫn giữ border-radius
             margin-bottom: 16px;
 
             .description-text {
+                text-align: justify;
+                .count {
+                    color: rgb(255, 206, 0);
+                }
                 color: white;
                 margin-bottom: 0;
+            }
+
+            // 4 góc bo tròn có viền
+            &::before,
+            &::after,
+            .corner {
+                content: '';
+                position: absolute;
+                width: 12px;
+                height: 12px;
+                border: 3px solid rgba(255, 255, 255, 0.5); // Màu border
+            }
+
+            // Góc trên trái
+            &::before {
+                top: 0;
+                left: 0;
+                border-right: none;
+                border-bottom: none;
+                border-top-left-radius: 8px; // Bo góc này
+            }
+
+            // Góc trên phải
+            &::after {
+                top: 0;
+                right: 0;
+                border-left: none;
+                border-bottom: none;
+                border-top-right-radius: 8px;
+            }
+
+            // Góc dưới trái
+            .corner.bottom-left {
+                bottom: 0;
+                left: 0;
+                border-right: none;
+                border-top: none;
+                border-bottom-left-radius: 8px;
+            }
+
+            // Góc dưới phải
+            .corner.bottom-right {
+                bottom: 0;
+                right: 0;
+                border-left: none;
+                border-top: none;
+                border-bottom-right-radius: 8px;
             }
         }
 
@@ -98,6 +155,58 @@
         }
     }
 }
+
+.search_form {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    &:focus,
+    &:hover {
+        border-color: transparent !important;
+    }
+    &::placeholder {
+        font-family: inherit;
+        font-weight: 400;
+        color: #000000;
+    }
+}
+
+.submit_search {
+    background-color: rgb(244, 230, 195) !important;
+    color: rgb(215, 25, 32);
+    font-weight: bold;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    &:hover {
+        color: rgb(215, 25, 32) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .search_component {
+        padding: 20px;
+    }
+
+    .submit_search {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search_component {
+        padding: 10px;
+    }
+
+    .search_form {
+        display: block;
+    }
+
+    .submit_search {
+        display: block;
+
+        font-size: 12px;
+    }
+}
+
 .content {
     background-color: #fff5e1;
     .list-options {

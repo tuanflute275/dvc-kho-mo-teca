@@ -28,7 +28,43 @@ function DonVi() {
         { "title": "Thể thao", "count": 1500 },
         { "title": "Thời trang", "count": 1500 },
         { "title": "Truyền thông", "count": 1500 },
-        { "title": "An ninh", "count": 1500 }
+        { "title": "Văn hóa", "count": 1500 },
+        { "title": "Giải trí", "count": 1500 },
+        { "title": "Thể thao", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 },
+        { "title": "Văn hóa", "count": 1500 },
+        { "title": "Giải trí", "count": 1500 },
+        { "title": "Thể thao", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 },
+        { "title": "Văn hóa", "count": 1500 },
+        { "title": "Giải trí", "count": 1500 },
+        { "title": "Thể thao", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 },
+        { "title": "An ninh", "count": 1500 },
+        { "title": "Văn hóa", "count": 1500 },
+        { "title": "Giải trí", "count": 1500 },
+        { "title": "Thể thao", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 },
+        { "title": "An ninh", "count": 1500 },
+        { "title": "Văn hóa", "count": 1500 },
+        { "title": "Giải trí", "count": 1500 },
+        { "title": "Thể thao", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 },
+        { "title": "An ninh", "count": 1500 },
+        { "title": "Văn hóa", "count": 1500 },
+        { "title": "Giải trí", "count": 1500 },
+        { "title": "Thể thao", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 }
     ]
     const [boBanCount, setBannedCount] = useState("30");
     const [searchData, setSearchData] = useState("");
@@ -44,7 +80,12 @@ function DonVi() {
     }
 
     useEffect(() => {
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100);
         setBannedCount(data.length)
+
+
     }, [searchData])
 
     return (

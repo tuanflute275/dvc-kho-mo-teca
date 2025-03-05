@@ -3,13 +3,14 @@ import { Col, Flex, Layout, Row } from 'antd';
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 import { AppButton, AppInput } from '../common';
-import styles from './bannerComponent.module.scss';
+import banner_styles from './bannerComponent.module.scss';
+import { useTranslate } from '~/context/LanguageContext';
 
-const cx = classNames.bind(styles);
+const cx = classNames.bind(banner_styles);
 
 function BannerComponent({ isHienThiInput, handleSubmitForm }) {
     const [postData, setPostData] = useState("");
-
+    const { t } = useTranslate();
     const handleChange = (e) => {
         const { value } = e.target;
         let sanitizedValue = value.replace(/[\/_<>?|\\;:,.@#$%!^&*(){}\[\]]/g, '');
@@ -32,7 +33,7 @@ function BannerComponent({ isHienThiInput, handleSubmitForm }) {
                             <Flex justify="center" align="middle">
                                 <AppInput
                                     type="text"
-                                    placeholder="Nhập từ khoá để tìm kiếm"
+                                    placeholder={t("app.searchPlaceholder")}
                                     value={postData}
                                     className={cx("search_form")}
                                     name="search"

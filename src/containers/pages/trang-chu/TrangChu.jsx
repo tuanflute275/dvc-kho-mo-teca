@@ -1,45 +1,78 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import { Card, Col, Flex, Input, Row, Typography } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
+import { Card, Col, Flex, Row, Typography } from 'antd';
 import Meta from 'antd/es/card/Meta';
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useTranslate } from '~/context/LanguageContext';
-import icon from '~/assets/images/icon.jpg';
 import classNames from 'classnames/bind';
+import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import icon from '~/assets/images/icon.jpg';
+import { AppButton, AppInput } from '~/components/common';
+import { useTranslate } from '~/context/LanguageContext';
 import styles from './trangChu.module.scss';
 
 const { Title, Paragraph } = Typography;
-const { Search } = Input;
 
 const cx = classNames.bind(styles);
 
 const TrangChu = () => {
+    const [postData, setPostData] = useState("");
+
+    const handleChange = (e) => {
+        const { value } = e.target;
+        let sanitizedValue = value.replace(/[_<>?|\\;:,.@#$%!^&*(){}\[\]]/g, '');
+        sanitizedValue = sanitizedValue.replace(/\s{2,}/g, ' ');
+        setPostData(sanitizedValue);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
     const { t } = useTranslate();
+
+    useEffect(() => {
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100);
+    }, [])
+
     return (
         <>
             <div className={cx("open-data-landing")}>
-                <Row justify="center" align="middle" className={cx("landing-content")} gutter={[16, 16]}>
+                <Row justify="space-between" align="middle" className={cx("landing-content")} gutter={[16, 16]}>
                     <Col xs={24} sm={24} md={12} className={cx("landing-text")}>
                         <Title level={2} className={cx("landing-title")}>
-                            Kho Dữ Liệu Với <span className={cx("count")}>20000</span> Bộ Dữ Liệu.
+                            {t("trangChu.landingTitleP1")} <span className={cx("count")}>20.000</span> {t("trangChu.landingTitleP2")}
                         </Title>
 
                         <Paragraph className={cx("landing-subtitle")}>
-                            Hỗ trợ tổ chức cá nhân tra cứu dữ liệu mở, chia sẻ dữ liệu đến cộng đồng
+                            {t("trangChu.landingSubtitle")}
                         </Paragraph>
 
-                        <Search
-                            placeholder="Nhập từ khóa để tìm kiếm"
-                            enterButton
-                            size="large"
-                            className={cx("search-input")}
-                        />
+                        <form method="POST" onSubmit={e => handleSubmit(e)} className={cx("search-input")}>
+                            <Flex justify="center" align="middle">
+                                <AppInput
+                                    type="text"
+                                    placeholder={t("app.searchPlaceholder")}
+                                    value={postData}
+                                    className={cx("search_form")}
+                                    name="search"
+                                    onChange={handleChange}
+                                />
+                                <AppButton
+                                    type="primary"
+                                    className={cx("submit_search")}
+                                    icon={<SearchOutlined />}
+                                    title="Tìm kiếm"
+                                    onClick={e => handleSubmit(e)}
+                                />
+                            </Flex>
+                        </form>
 
                         <div className={cx("open-data-description")}>
+                            <span className={cx("corner", "bottom-left")}></span>
+                            <span className={cx("corner", "bottom-right")}></span>
                             <Paragraph className={cx("description-text")}>
-                                Dữ liệu mở (Open Data) là dữ liệu được công khai và tự do sử dụng,
-                                tái sử dụng và phân phối bởi một người mà không bị hạn chế bởi các
-                                quy định về bản quyền, quyền sở hữu hoặc các ràng buộc pháp lý khác.
+                                <span className={cx("count")}>{t("trangChu.landingMotaP1")}</span> {t("trangChu.landingMotaP2")}
                             </Paragraph>
                         </div>
                     </Col>
@@ -82,7 +115,7 @@ const TrangChu = () => {
                                 <Meta title={t('trangChu.duLieuMoiNhat')} />
                             </Card>
                         </NavLink>
-                        <NavLink to={'/'}>
+                        <NavLink to={'/linh-vuc'}>
                             <Card
                                 hoverable
                                 className={cx("custom-card")}
@@ -95,7 +128,7 @@ const TrangChu = () => {
                                 <Meta title={t('trangChu.duLieuTheoLinhVuc')} />
                             </Card>
                         </NavLink>
-                        <NavLink to={'/'}>
+                        <NavLink to={'/don-vi'}>
                             <Card
                                 hoverable
                                 className={cx("custom-card")}

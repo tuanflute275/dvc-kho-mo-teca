@@ -1,43 +1,43 @@
-import React, { useEffect, useState } from "react";
-import "./login.scss";
-import { useNavigate } from "react-router-dom";
-import * as AuthServices from "~/services/AuthService";
+import { Button, Checkbox, Flex, Form, Input } from "antd";
 import { useDispatch } from "react-redux";
-import { setToken, setUser } from "~/redux/reducers/user";
-import { Button, Checkbox, Flex, Form, Input, Modal, Typography } from "antd";
+import { useNavigate } from "react-router-dom";
 import { setPermissions } from "~/redux/reducers/permission";
+import { setUser } from "~/redux/reducers/user";
 import { compareValues } from "~/utils/helper";
+import styles from "./login.module.scss";
+import classNames from "classnames/bind";
+
+const cx = classNames.bind(styles);
 
 function Login() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-  const onFinish = async (values) => {
-    console.log("Success:", values);
+    const onFinish = async (values) => {
+        console.log("Success:", values);
 
-    if (compareValues(values.username, "admin") && compareValues(values.password, "Admin@Teca2025")) {
+        if (compareValues(values.username, "admin") && compareValues(values.password, "Admin@Teca2025")) {
 
-      const dataUser = {
-        id: 1,
-        username: "admin",
-        fullname: "TECAPRO",
-        email: "admin-teca@gmail.com",
-      };
+            const dataUser = {
+                id: 1,
+                username: "admin",
+                fullname: "TECAPRO",
+                email: "admin-teca@gmail.com",
+            };
 
-      dispatch(setUser(dataUser));
-      const defaultPermissions = ["submit_data", "edit_data"];
-      // localStorage.setItem("permissions", JSON.stringify(defaultPermissions));
-      dispatch(setPermissions(defaultPermissions));
-      navigate("/");
-    }
-  };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+            dispatch(setUser(dataUser));
+            const defaultPermissions = ["submit_data", "edit_data"];
+            // localStorage.setItem("permissions", JSON.stringify(defaultPermissions));
+            dispatch(setPermissions(defaultPermissions));
+            navigate("/");
+        }
+    };
+    const onFinishFailed = (errorInfo) => {
+        console.log("Failed:", errorInfo);
+    };
 
     return (
         <>
-            {/* <Title level={2} style={{ textAlign: "center" }}>Login Form</Title> */}
             <Flex style={{ height: '100vh' }} justify="center" align="center">
                 <Form
                     labelCol={{ span: 8 }}

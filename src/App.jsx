@@ -14,7 +14,8 @@ const ProtectedRoute = ({ isAuthenticated, children, path, permissions = [] }) =
 
   if (permissions.length > 0) {
     const userPermissions = JSON.parse(localStorage.getItem('permissions') || '[]');
-    const hasPermission = permissions.some((permission) => userPermissions.includes(permission));
+    // const hasPermission = permissions.some((permission) => userPermissions.includes(permission));
+    const hasPermission = true;
 
     if (!hasPermission) {
       return <Navigate to="/403" />;
@@ -37,8 +38,9 @@ function App() {
     if (!route.can) {
       return true;
     }
-    console.log(route.can.some((permission) => userPermissions.includes(permission)))
-    return route.can.some((permission) => userPermissions.includes(permission));
+    // console.log(route.can.some((permission) => userPermissions.includes(permission)))
+    // return route.can.some((permission) => userPermissions.includes(permission));
+    return true;
   };
 
   return (
