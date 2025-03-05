@@ -1,39 +1,68 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import { Card, Col, Flex, Row } from 'antd';
+import { Card, Col, Flex, Input, Row, Typography } from 'antd';
 import Meta from 'antd/es/card/Meta';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './trangChu.scss';
 import { useTranslate } from '~/context/LanguageContext';
 import icon from '~/assets/images/icon.jpg';
-import banner from '~/assets/images/bannner1.png';
+import classNames from 'classnames/bind';
+import styles from './trangChu.module.scss';
+
+const { Title, Paragraph } = Typography;
+const { Search } = Input;
+
+const cx = classNames.bind(styles);
 
 const TrangChu = () => {
     const { t } = useTranslate();
     return (
         <>
-            <div className="banner">
-                <div className="container">
-                    <Row align="middle" justify="center" gutter={[16, 16]}>
-                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                            <div style={{ background: '#ddd', padding: '20px' }}>Cột 1</div>
-                        </Col>
-                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                            <div style={{ background: '#bbb', padding: '20px' }}>Cột 2</div>
-                        </Col>
-                    </Row>
-                </div>
+            <div className={cx("open-data-landing")}>
+                <Row justify="center" align="middle" className={cx("landing-content")} gutter={[16, 16]}>
+                    <Col xs={24} sm={24} md={12} className={cx("landing-text")}>
+                        <Title level={2} className={cx("landing-title")}>
+                            Kho Dữ Liệu Với <span className={cx("count")}>20000</span> Bộ Dữ Liệu.
+                        </Title>
+
+                        <Paragraph className={cx("landing-subtitle")}>
+                            Hỗ trợ tổ chức cá nhân tra cứu dữ liệu mở, chia sẻ dữ liệu đến cộng đồng
+                        </Paragraph>
+
+                        <Search
+                            placeholder="Nhập từ khóa để tìm kiếm"
+                            enterButton
+                            size="large"
+                            className={cx("search-input")}
+                        />
+
+                        <div className={cx("open-data-description")}>
+                            <Paragraph className={cx("description-text")}>
+                                Dữ liệu mở (Open Data) là dữ liệu được công khai và tự do sử dụng,
+                                tái sử dụng và phân phối bởi một người mà không bị hạn chế bởi các
+                                quy định về bản quyền, quyền sở hữu hoặc các ràng buộc pháp lý khác.
+                            </Paragraph>
+                        </div>
+                    </Col>
+
+                    <Col xs={24} sm={24} md={12} className={cx("landing-graphic")}>
+                        <img
+                            src="https://placehold.co/600x400"
+                            alt="Data Storage"
+                            className={cx("graphic-image")}
+                        />
+                    </Col>
+                </Row>
             </div>
-            <div className="content">
-                <div className="container list-options">
+            <div className={cx("content")}>
+                <div className={cx("container", "list-options")}>
                     <Flex justify="center" wrap="wrap" gap="small">
                         <NavLink to={'/don-vi'}>
                             <Card
                                 hoverable
-                                className="custom-card"
+                                className={cx("custom-card")}
                                 cover={
-                                    <div className="icon-view">
-                                        <img className="image-icon" alt="image" src={icon} />
+                                    <div className={cx("icon-view")}>
+                                        <img className={cx("image-icon")} alt="image" src={icon} />
                                     </div>
                                 }
                             >
@@ -43,10 +72,10 @@ const TrangChu = () => {
                         <NavLink to={'/'}>
                             <Card
                                 hoverable
-                                className="custom-card"
+                                className={cx("custom-card")}
                                 cover={
-                                    <div className="icon-view">
-                                        <img className="image-icon" alt="image" src={icon} />
+                                    <div className={cx("icon-view")}>
+                                        <img className={cx("image-icon")} alt="image" src={icon} />
                                     </div>
                                 }
                             >
@@ -56,10 +85,10 @@ const TrangChu = () => {
                         <NavLink to={'/'}>
                             <Card
                                 hoverable
-                                className="custom-card"
+                                className={cx("custom-card")}
                                 cover={
-                                    <div className="icon-view">
-                                        <img className="image-icon" alt="image" src={icon} />
+                                    <div className={cx("icon-view")}>
+                                        <img className={cx("image-icon")} alt="image" src={icon} />
                                     </div>
                                 }
                             >
@@ -69,10 +98,10 @@ const TrangChu = () => {
                         <NavLink to={'/'}>
                             <Card
                                 hoverable
-                                className="custom-card"
+                                className={cx("custom-card")}
                                 cover={
-                                    <div className="icon-view">
-                                        <img className="image-icon" alt="image" src={icon} />
+                                    <div className={cx("icon-view")}>
+                                        <img className={cx("image-icon")} alt="image" src={icon} />
                                     </div>
                                 }
                             >

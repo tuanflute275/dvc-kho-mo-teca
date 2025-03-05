@@ -1,4 +1,10 @@
-@import '../../../styles/variables';
+@use '../../../styles/variables' as *;
+
+.container {
+    max-width: 80%;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
 
 .header {
     background-color: #fff5e1;
@@ -204,7 +210,7 @@
         }
     }
 
-    .btn-login-mobile{
+    .btn-login-mobile {
         border-top: 1px solid #dadada;
         width: 100%;
         text-align: center;
