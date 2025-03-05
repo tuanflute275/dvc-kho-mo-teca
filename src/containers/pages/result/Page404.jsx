@@ -1,19 +1,19 @@
-import React from 'react';
-import { Button, Result } from 'antd';
+import React from "react";
+import { Button, Result } from "antd";
+import { useNavigate } from "react-router-dom";
+import { useTranslate } from "~/context/LanguageContext";
 
 const Page404 = () => {
-    return (
-        <Result
-            status="404"
-            title="404"
-            subTitle="Sorry, the page you visited does not exist."
-            extra={
-                <Button type="primary" href="/">
-                    Back Home
-                </Button>
-            }
-        />
-    );
+  const navigate = useNavigate();
+  const { t } = useTranslate();
+  return (
+    <Result
+      status="404"
+      title="404"
+      subTitle={t("app.404Notify")}
+      extra={<Button type="primary" onClick={() => { navigate(-1, { replace: true }) }}>{t('app.btnComeback')}</Button>}
+    />
+  );
 };
 
 export default Page404;

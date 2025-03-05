@@ -1,0 +1,26 @@
+.layout {
+  border-radius: 8;
+  overflow: hidden;
+  padding: 0 10px;
+  width: calc(50% - 8px);
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  padding: 0;
+}
+
+.layout > .ant-layout {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.layout > .ant-layout > main {
+  flex: 1; // Đẩy footer xuống dưới nếu nội dung không đủ dài
+}
+
+.layout > .ant-layout > footer {
+  margin-top: auto; // Đảm bảo footer luôn ở dưới cùng
+}

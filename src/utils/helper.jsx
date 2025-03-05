@@ -141,11 +141,11 @@ export function GetValueEnviroment(key, isDecrypt = true) {
 }
 
 export function decryptCustom(cipherText) {
-    const encryptionKey = "S6|d'qc1GG,'rx&xn0XC";
-    const saltHex = '4976616e204d65647665646576';
-    if (!cipherText || cipherText.trim() === '') {
-        return '';
-    }
+  const encryptionKey = "S6|d'qc1GG,'rx&xn0XC";
+  const saltHex = "4976616e204d65647665646576";
+  if (!cipherText || cipherText.trim() === "") {
+    return "";
+  }
 
     try {
         // Convert salt from hex to word array
@@ -168,52 +168,53 @@ export function decryptCustom(cipherText) {
             padding: CryptoJS.pad.Pkcs7,
         });
 
-        // Convert from WordArray to UTF-16LE (fixes extra spaces)
-        const decryptedBytes = CryptoJS.enc.Utf8.stringify(decrypted);
-        const decoder = new TextDecoder('utf-16le'); // Correct encoding
-        const decryptedText = decoder.decode(new Uint8Array(decryptedBytes.split('').map((c) => c.charCodeAt(0))));
-
-        return decryptedText;
-    } catch (error) {
-        console.error('Decryption failed:', error);
-        return '';
-    }
-}
+    // Convert from WordArray to UTF-16LE (fixes extra spaces)
+    const decryptedBytes = CryptoJS.enc.Utf8.stringify(decrypted);
+    const decoder = new TextDecoder("utf-16le"); // Correct encoding
+    return decoder.decode(
+      new Uint8Array(decryptedBytes.split("").map((c) => c.charCodeAt(0)))
+    );
+  } catch (error) {
+    console.error("Decryption failed:", error);
+    return "";
+  }
+};
 
 export function encryptCustom(plainText) {
-    const encryptionKey = "S6|d'qc1GG,'rx&xn0XC";
-    const saltHex = '4976616e204d65647665646576';
-    if (!plainText || plainText.trim() === '') {
-        return '';
-    }
+  const encryptionKey = "S6|d'qc1GG,'rx&xn0XC";
+  const saltHex = "4976616e204d65647665646576";
+  if (!plainText || plainText.trim() === "") {
+    return "";
+  }
 
-    try {
-        // Convert salt from hex to word array
-        const salt = CryptoJS.enc.Hex.parse(saltHex);
+  try {
+    // Convert salt from hex to word array
+    const salt = CryptoJS.enc.Hex.parse(saltHex);
 
-        // Derive key and IV using PBKDF2
-        const keyAndIV = CryptoJS.PBKDF2(encryptionKey, salt, {
-            keySize: 48 / 4, // 48 bytes (32 bytes key + 16 bytes IV)
-            iterations: 1000,
-            hasher: CryptoJS.algo.SHA1,
-        });
+    // Derive key and IV using PBKDF2
+    const keyAndIV = CryptoJS.PBKDF2(encryptionKey, salt, {
+      keySize: 48 / 4, // 48 bytes (32 bytes key + 16 bytes IV)
+      iterations: 1000,
+      hasher: CryptoJS.algo.SHA1,
+    });
 
         const key = CryptoJS.lib.WordArray.create(keyAndIV.words.slice(0, 8)); // 32 bytes key
         const iv = CryptoJS.lib.WordArray.create(keyAndIV.words.slice(8, 12)); // 16 bytes IV
 
-        // Encrypt using AES-256-CBC
-        const encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf16LE.parse(plainText), key, {
-            iv: iv,
-            mode: CryptoJS.mode.CBC,
-            padding: CryptoJS.pad.Pkcs7,
-        });
+    // Encrypt using AES-256-CBC
+    const encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf16LE.parse(plainText), key, {
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7,
+    });
 
-        return CryptoJS.enc.Base64.stringify(encrypted.ciphertext);
-    } catch (error) {
-        console.error('Encryption failed:', error);
-        return '';
-    }
-}
+    return CryptoJS.enc.Base64.stringify(encrypted.ciphertext);
+  } catch (error) {
+    console.error("Encryption failed:", error);
+    return "";
+  }
+};
+
 
 export const validateFormHelper = (data, rules) => {
     let errors = {};
@@ -307,7 +308,7 @@ export const validateFormHelper = (data, rules) => {
  * compareNumbers(5, 6); // false (vì hai số khác nhau rõ ràng)
  */
 const compareNumbers = (a, b) => {
-    return Math.abs(a - b) < Number.EPSILON;
+  return Math.abs(a - b) < Number.EPSILON;
 };
 
 /**
@@ -323,7 +324,7 @@ const compareNumbers = (a, b) => {
  * compareStrings("apple", "banana"); // false
  */
 const compareStrings = (a, b) => {
-    return a.localeCompare(b) === 0;
+  return a.localeCompare(b) === 0;
 };
 
 /**
@@ -343,11 +344,11 @@ const compareStrings = (a, b) => {
  * compareValues(5, "5"); // false
  */
 export const compareValues = (a, b) => {
-    if (typeof a === 'number' && typeof b === 'number') {
-        return compareNumbers(a, b);
-    }
-    if (typeof a === 'string' && typeof b === 'string') {
-        return compareStrings(a, b);
-    }
-    return false;
+  if (typeof a === "number" && typeof b === "number") {
+    return compareNumbers(a, b);
+  }
+  if (typeof a === "string" && typeof b === "string") {
+    return compareStrings(a, b);
+  }
+  return false;
 };

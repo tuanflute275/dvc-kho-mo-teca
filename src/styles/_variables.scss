@@ -1,8 +1,8 @@
 // Màu sắc chính của ứng dụng
 $primary-color: #3498db;
-$secondary-color: #2ecc71; 
+$secondary-color: #2ecc71;
 
-$white:    #fff;
+$white: #fff;
 $gray-100: #f6f7fb;
 $gray-200: #eef2f7;
 $gray-300: #e7e9eb;
@@ -12,22 +12,47 @@ $gray-600: #8a969c;
 $gray-700: #6c757d;
 $gray-800: #343a40;
 $gray-900: #313a46;
-$black:    #000;
+$black: #000;
 
-
+$grays: (
+  '100': $gray-100,
+  '200': $gray-200,
+  '300': $gray-300,
+  '400': $gray-400,
+  '500': $gray-500,
+  '600': $gray-600,
+  '700': $gray-700,
+  '800': $gray-800,
+  '900': $gray-900,
+);
 
 // color
-$blue:       #465dff;
-$indigo:     #6b5eae;
-$purple:     #783bff;
-$pink:       #ff679b;
-$red:        #ff6d43;
-$orange:     #fd7e14;
-$yellow:     #f9c45c;
-$green:      #6ac75a;
-$teal:       #02bc9c;
-$cyan:       #67baf1;
+$blue: #465dff;
+$indigo: #6b5eae;
+$purple: #783bff;
+$pink: #ff679b;
+$red: #ff6d43;
+$orange: #fd7e14;
+$yellow: #f9c45c;
+$green: #6ac75a;
+$teal: #02bc9c;
+$cyan: #67baf1;
 
+$colors: (
+  'blue': $blue,
+  'indigo': $indigo,
+  'pink': $pink,
+  'red': $red,
+  'orange': $orange,
+  'yellow': $yellow,
+  'green': $green,
+  'teal': $teal,
+  'cyan': $cyan,
+  'black': $black,
+  'white': $white,
+  'gray': $gray-600,
+  'gray-dark': $gray-800,
+);
 
 $blue-100: tint-color($blue, 80%);
 $blue-200: tint-color($blue, 60%);
@@ -129,25 +154,24 @@ $cyan-700: shade-color($cyan, 40%);
 $cyan-800: shade-color($cyan, 60%);
 $cyan-900: shade-color($cyan, 80%);
 
-$success-color:       $green;
-$info-color:          $cyan;
-$warning-color:       $yellow;
-$danger-color:        $red;
-$light-color:         $gray-200;
-$dark-color:          $gray-900;
-
+$success-color: $green;
+$info-color: $cyan;
+$warning-color: $yellow;
+$danger-color: $red;
+$light-color: $gray-200;
+$dark-color: $gray-900;
 
 // Các font
 $font-family: 'Arial', sans-serif;
 $font-size-base: 16px;
 $line-height-base: 1.5;
-$font-weight-light:           300;
-$font-weight-normal:          400;
-$font-weight-medium:          500;
-$font-weight-semibold:        600;
-$font-weight-bold:            700;
-$font-weight-bolder:          bolder;
-$font-weight-base:            $font-weight-normal;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-bolder: bolder;
+$font-weight-base: $font-weight-normal;
 
 // Các kích thước phổ biến
 $container-width: 1200px;

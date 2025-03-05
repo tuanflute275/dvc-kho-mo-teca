@@ -1,8 +1,9 @@
-import React from 'react';
-import './duLieu.scss';
+import React from 'react'
 
-const DuLieu = () => {
-    return <div>du lieu</div>;
-};
+function DuLieu() {
+    return (
+        <div>DuLieu</div>
+    )
+}
 
-export default DuLieu;
+export default DuLieu

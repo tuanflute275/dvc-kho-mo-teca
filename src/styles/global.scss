@@ -1,11 +1,5 @@
-@import "./base";
-@import "./mixins";
-@import "./variables";
-@import "./components/user.scss";
-@import "./pages/login.scss";
-
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-}
+@import './base';
+@import './mixins';
+@import './variables';
+@import './components/user.scss';
+@import './pages/login.scss';

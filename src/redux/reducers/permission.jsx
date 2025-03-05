@@ -1,8 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { decryptCustom, encryptCustom, isNullOrEmpty } from '~/utils/helper';
+import { createSlice } from "@reduxjs/toolkit";
+import { decryptCustom, encryptCustom, isNullOrEmpty } from "~/utils/helper";
 
 const getPermissionData = () => {
-    const encryptedPermissions = localStorage.getItem('permissions');
+    const encryptedPermissions = localStorage.getItem("permissions");
     if (isNullOrEmpty(encryptedPermissions)) {
         return {};
     }
@@ -10,7 +10,7 @@ const getPermissionData = () => {
         const decryptedPermissions = decryptCustom(encryptedPermissions);
         return decryptedPermissions ? JSON.parse(decryptedPermissions) : {};
     } catch (error) {
-        console.error('Error decrypting permissions:', error);
+        console.error("Error decrypting permissions:", error);
         return {};
     }
 };
@@ -18,14 +18,14 @@ const getPermissionData = () => {
 const setPermissionData = (permissions) => {
     try {
         const dataHash = encryptCustom(JSON.stringify(permissions));
-        localStorage.setItem('permissions', dataHash);
+        localStorage.setItem("permissions", dataHash);
     } catch (error) {
-        console.error('Error encrypting permissions:', error);
+        console.error("Error encrypting permissions:", error);
     }
 };
 
 const clearPermissionData = () => {
-    localStorage.removeItem('permissions');
+    localStorage.removeItem("permissions");
 };
 
 const initState = {
@@ -33,7 +33,7 @@ const initState = {
 };
 
 export const permissionSlice = createSlice({
-    name: 'permission',
+    name: "permission",
     initialState: initState,
     reducers: {
         setPermissions(state, action) {
