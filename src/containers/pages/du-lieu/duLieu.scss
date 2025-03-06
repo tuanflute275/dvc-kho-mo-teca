@@ -5,7 +5,8 @@ main {
 .container {
     max-width: 80%;
     margin: 0 auto;
-    background-color: rgb(255, 255, 255) !important;
+    padding: 0 !important;
+    // background-color: rgb(255, 255, 255) !important;
 }
 
 // sidebar styles
@@ -31,21 +32,20 @@ main {
     font-weight: bold;
 }
 
-.sidebar .parent_menu_item span,
-div {
+.sidebar .ant-menu-submenu .ant-menu-title-content,
+.ant-menu-submenu-title {
     padding-left: 10px !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
 
-.sidebar .parent_menu_item :hover {
+.sidebar .ant-menu-submenu :hover {
     background-color: transparent !important;
 }
 
 .sidebar .sub_menu_items {
     background-color: white !important;
     border-radius: unset !important;
-    // padding: 0 !important;
 }
 
 .sidebar .sub_menu_items:hover {
@@ -58,17 +58,17 @@ div {
 }
 
 .sidebar .sub_menu_items .number {
-    background-color: #ffeb3b; /* Màu vàng nền */
-    color: #000; /* Màu chữ đen */
-    padding: 4px 10px; /* Khoảng cách xung quanh chữ */
-    border-radius: 12px; /* Bo tròn góc */
-    font-size: 14px; /* Kích thước chữ */
-    font-weight: bold; /* Làm đậm chữ */
-    display: inline-block; /* Đảm bảo phần tử hiển thị inline */
-    height: 24px; /* Chiều cao cố định */
-    line-height: 16px; /* Căn giữa chữ theo chiều dọc */
-    text-align: center; /* Căn giữa chữ theo chiều ngang */
-    margin-left: 8px; /* Khoảng cách giữa tên và số */
+    background-color: #ffeb3b;
+    color: #000;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    height: 24px;
+    line-height: 16px;
+    text-align: center;
+    margin-left: 8px;
 }
 
 .sidebar .sub_menu_items .number:hover {
@@ -96,41 +96,17 @@ div {
     padding: 15px;
     margin: 0;
 }
-
-// .main .pagination {
-//     display: flex;
-//     justify-content: space-between;
-//     padding: 10px 0;
-// }
-
-// .main .pagination .page-center {
-//     margin-left: 100px;
-// }
-
-// .main .pagination .arrow-left {
-//     border: 1px solid red !important;
-//     color: red !important;
-// }
-
-// .main .pagination .next {
-//     background-color: red !important;
-//     color: white !important;
-//     margin-left: 10px;
-// }
-
-// .main .pagination .page {
-//     padding: 10px 0;
-// }
-
-// .main .pagination .page input {
-//     width: 50px;
-//     margin: 0 10px;
-// }
 // end main content styles
 
 //responsive
 @media (max-width: 768px) {
     .main .pagination .page-none {
         display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        font-size: 10px;
     }
 }
