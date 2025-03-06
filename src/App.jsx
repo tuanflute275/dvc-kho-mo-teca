@@ -16,7 +16,7 @@ const ProtectedRoute = ({ isAuthenticated, children, path, permissions = [] }) =
 
         if (!hasPermission) {
             return <Navigate to="/403" />;
-        }
+        }   
     }
 
     return children;
