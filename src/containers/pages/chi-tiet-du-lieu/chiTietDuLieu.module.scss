@@ -1,119 +1,135 @@
+$color-hover: #f5f5f5;
+$border-radius-small: 6px;
+$box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 main {
     background-color: rgb(255, 255, 255) !important;
 }
-
 .container {
+    display: flex;
     max-width: 80%;
+    flex-direction: column;
     margin: 0 auto;
-    padding: 0 !important;
+    background-color: rgb(255, 255, 255) !important;
+    .border {
+        box-shadow: $box-shadow;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        border: 1px solid #cccccc;
+        border-radius: 2px;
+        background-color: #f0f0f0;
+        .height {
+            padding-left: 8px;
+            height: 30px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            background-color: #c0c0c0;
+        }
+        .box {
+            border-bottom: 1px solid #cccccc;
+            background-color: white;
+            box-shadow: $box-shadow;
+            .border1 {
+                padding: 12px;
+                text-align: justify;
+            }
+            .text_right {
+                margin-left: auto; /* Đẩy div về bên phải */
+                width: 140px;
+                margin-bottom: 15px;
+            }
+        }
+    }
 }
-
-// sidebar styles
-.sidebar-horizontal {
+// Mặc định: Ẩn Breadcrumb bên trái
+.breadcrumb-left {
     display: none;
 }
-.sidebar {
-    background-color: #f0f0f0 !important;
-    padding: 0 !important;
-    :global(.parent_menu_item) {
-        &:hover {
-            background-color: transparent !important;
-        }
-    }
-    :global(.ant-menu-submenu-title) {
-        padding-left: 10px !important;
-        margin-top: 0 !important;
-        margin-bottom: 0 !important;
-        &:hover {
-            background-color: transparent !important;
-        }
-    }
-    :global(.ant-menu-submenu-arrow) {
-        display: none;
-    }
-}
 
-.sidebar .parent_menu_item {
-    background-color: #d3d3d3;
-    border-radius: unset !important;
-    font-weight: bold;
-}
-
-.sidebar .sub_menu_items {
-    background-color: white !important;
-    border-radius: unset !important;
-    &:hover {
-        background-color: white !important;
-    }
-}
-
-.sidebar .sub_menu_items .number {
-    background-color: #ffeb3b;
-    color: #000;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: bold;
-    display: inline-block;
-    height: 24px;
-    line-height: 16px;
-    text-align: center;
-    margin-left: 8px;
-}
-
-.sidebar .sub_menu_items .number:hover {
-    background-color: #ffeb3b !important;
-}
-
-.sidebar .sub_menu_item {
-    background-color: white !important;
-    border-radius: unset !important;
-    padding-left: 10px !important;
-    font-weight: lighter;
-}
-
-.sidebar .sub_menu_item ant-menu-item-content {
-    padding-left: 10px !important;
-}
-//end sidebar styles
-
-//main content styles
-.main .title span {
-    color: red;
-    font-size: 30px;
-}
-.main .link {
-    padding: 15px;
-    margin: 0;
-}
-// end main content styles
-
-//responsive
+// Khi màn hình nhỏ hơn 768px, ẩn Breadcrumb bên phải và hiển thị bên trái
 @media (max-width: 768px) {
-    .sidebar-vertical {
+    .breadcrumb-left {
+        display: block;
+    }
+    .breadcrumb-right {
         display: none;
     }
-    .sidebar-horizontal {
-        display: block;
+}
+.col_right {
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 16px 0px 16px;
+    //display: flex;
+    .padding {
+        padding: 12px 12px 12px 0px;
+        text-align: justify;
+    }
+    .border {
+        box-shadow: $box-shadow;
+        margin-left: 0px;
+        //padding-left: 0px !important;
+        //padding-right: 0px !important;
+        border: 1px solid #cccccc;
+        border-radius: 2px;
         background-color: #f0f0f0;
-        :global(.ant-menu-submenu) {
-            background-color: transparent !important;
-        }
-        :global(.ant-menu-submenu-open) {
-            &::after {
-                content: '';
-                border-bottom-color: #f0f0f0 !important;
+        .width {
+            width: 100%;
+            .margin {
+                padding-left: 8px;
+                background-color: #f0f0f0;
+                box-shadow: $box-shadow;
+                .col_right_title {
+                    font-weight: bold !important;
+                    margin-top: 10px;
+                    margin-bottom: 4px;
+                }
+                .padding_title {
+                    padding: 4px 0px 4px 0px;
+                    font-weight: bold;
+                    .padding_title_item {
+                        font-weight: initial;
+                    }
+                    .blue {
+                        color: rgb(0, 0, 255);
+                    }
+                }
+                .paddingbutton {
+                    padding: 12px 0px 12px 0px;
+                    .buttonsize {
+                        margin-right: 6px;
+                        width: 70px;
+                        height: 23px;
+                        color: white !important;
+                        border: unset !important;
+                        //margin-right: 0px;
+                    }
+                }
             }
-            &::before {
-                content: '';
-                border-bottom-color: #f0f0f0 !important;
-            }
         }
+    }
+    .btn_xem {
+        box-shadow: $box-shadow;
+        margin: 10px 0px 10px 10px;
+        color: white !important;
+        border: unset !important;
+        background-color: rgb(215, 25, 32) !important;
     }
 }
 
-@media (max-width: 480px) {
-    .sidebar {
-        font-size: 10px;
-    }
+.title {
+    font-size: 20px;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+.counting {
+    color: rgb(215, 25, 32);
+}
+
+.light_gray {
+    background-color: #c0c0c0;
+}
+
+.width {
+    width: 100%;
 }
