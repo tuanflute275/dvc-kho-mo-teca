@@ -129,5 +129,32 @@
   },
   "banner": {
     "inputEmpty": "Không được để trống"
+  },
+  "chiTietDuLieu": {
+    "thongTin": "Thông tin",
+    "luotXem": "lượt xem",
+    "trangChu": "Trang chủ",
+    "duLieuTimKiem": "Dữ liệu tìm kiếm",
+    "boDuLieuDuocTimThay": "bộ dữ liệu được tìm thấy",
+    "ngayCapNhat": "Ngày cập nhật",
+    "donViCungCapDuLieu": "Đơn vị cung cấp dữ liêu",
+    "linhVuc": "Lĩnh vực",
+    "taiLieuDinhKem": "Tài liệu đính kèm",
+    "pdf": "PDF",
+    "word": "Word",
+    "csv": "CSV",
+    "excel": "Excel",
+    "xemTruoc": "Xem trước",
+    "thongTinDuLieu": "Thông tin dữ liệu"
+  },
+  "donVi": {
+    "tinhThanhPho": "tỉnh thành phố",
+    "boBanNganh": "bộ ban ngành",
+    "cqNgangBo": "cơ quan ngang bộ"
+  },
+  "linhVuc": {
+    "timKiemSuccess": "Tìm kiếm thành công",
+    "linhVuc": "lĩnh vực",
+    "total": "Tổng số"
   }
 }

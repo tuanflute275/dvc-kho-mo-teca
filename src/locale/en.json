@@ -111,23 +111,50 @@
     "duLieuMoiNhat": "Latest data",
     "duLieuTheoLinhVuc": "Data by field",
     "duLieuTheoDonVi": "Data by unit",
-    "landingTitleP1": "Data Repository With",
-    "landingTitleP2": "Data sets.",
-    "landingSubtitle": "Supporting organizations and individuals in accessing open data, sharing data with the community.",
-    "landingMotaP1": "Open data (Open Data)",
-    "landingMotaP2": "is publicly available data that can be freely used, reused, and distributed by anyone without being restricted by copyright, ownership, or other legal limitations. It is often published as electronic files that can be accessed and downloaded online. Open data can come from various sources, including government, non-governmental organizations, non-profits, and user communities."
+    "landingTitleP1": "Data Warehouse With",
+    "landingTitleP2": "Datasets.",
+    "landingSubtitle": "Supporting organizations and individuals in accessing open data and sharing data with the community.",
+    "landingMotaP1": "Open Data",
+    "landingMotaP2": "is data that is publicly available and free to use, reuse, and distribute without restrictions due to copyright, ownership, or other legal constraints. It is usually published in electronic file formats, accessible, and downloadable online. Open data can originate from various sources, including governments, non-governmental organizations, non-profits, and user communities."
   },
   "dsDuLieu": {
-    "boDuLieu": "Data set",
+    "boDuLieu": "Dataset",
     "trangTiep": "Next page",
     "Trang": "Page",
-    "Cua": "Of",
+    "Cua": "of",
     "khongCoDuLieu": {
-      "tieuDe": "No data",
-      "noiDung": "There is currently no data in this dataset"
+      "tieuDe": "No data available",
+      "noiDung": "Currently, there is no data in the dataset"
     }
   },
   "banner": {
-    "inputEmpty": "Cannot be empty"
+    "inputEmpty": "Cannot be left blank"
+  },
+  "chiTietDuLieu": {
+    "thongTin": "Information",
+    "luotXem": "views",
+    "trangChu": "Homepage",
+    "duLieuTimKiem": "Searched data",
+    "boDuLieuDuocTimThay": "datasets found",
+    "ngayCapNhat": "Updated date",
+    "donViCungCapDuLieu": "Data provider",
+    "linhVuc": "Field",
+    "taiLieuDinhKem": "Attachments",
+    "pdf": "PDF",
+    "word": "Word",
+    "csv": "CSV",
+    "excel": "Excel",
+    "xemTruoc": "Preview",
+    "thongTinDuLieu": "Data information"
+  },
+  "donVi": {
+    "tinhThanhPho": "Province/City",
+    "boBanNganh": "Ministries/Departments",
+    "cqNgangBo": "Government agencies"
+  },
+  "linhVuc": {
+    "timKiemSuccess": "Search successful",
+    "linhVuc": "Field",
+    "total": "Total"
   }
 }

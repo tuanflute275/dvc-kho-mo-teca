@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import BannerComponent from '~/components/BannerComponent/BannerComponent';
 import DanhSachDuLieu from '~/components/danhSachDuLieu/danhSachDuLieu';
 import donViStyle from './donVi.module.scss';
+import { useTranslate } from '~/context/LanguageContext';
 
 const cx = classNames.bind(donViStyle);
 
@@ -69,7 +70,7 @@ function DonVi() {
     const [boBanCount, setBannedCount] = useState("30");
     const [searchData, setSearchData] = useState("");
     const [tinhThanhCount, setTinhThanhCount] = useState("64");
-
+    const { t } = useTranslate();
     const [data, setData] = useState(initMockdata);
 
     const handleDataFromChild = (searchStr) => {
@@ -95,8 +96,8 @@ function DonVi() {
             <Layout className={cx('container')}>
                 <Row gutter={[16, 16]}>
                     <p className={cx('title')}>
-                        <span className={cx('counting')}>{tinhThanhCount}</span> tỉnh thành phố,
-                        {" "}<span className={cx('counting')}>{boBanCount}</span> bộ ban ngành, cơ quan ngang bộ.
+                        <span className={cx('counting')}>{tinhThanhCount}</span> {t("donVi.tinhThanhPho")},
+                        {" "}<span className={cx('counting')}>{boBanCount}</span> {t("donVi.boBanNganh")}, {t("donVi.cqNgangBo")}.
                     </p>
                 </Row>
 

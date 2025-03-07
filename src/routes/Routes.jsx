@@ -8,6 +8,7 @@ import DuLieu from '~/containers/pages/du-lieu/DuLieu';
 import DonVi from '~/containers/pages/don-vi/DonVi';
 import LinhVuc from '~/containers/pages/linh-vuc/LinhVuc';
 import TinTuc from '~/containers/pages/tin-tuc/TinTuc';
+import ChiTietDuLieu from '~/containers/pages/chi-tiet-du-lieu/ChiTietDuLieu';
 
 export const appRoutes = [
   {
@@ -54,6 +55,11 @@ export const appRoutes = [
   {
     path: '/tin-tuc',
     element: <MasterLayout child={<TinTuc />} />,
+    protected: false,
+  },
+  {
+    path: '/chi-tiet-du-lieu',
+    element: <MasterLayout child={<ChiTietDuLieu />} />,
     protected: false,
   },
   {

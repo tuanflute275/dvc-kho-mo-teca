@@ -4,6 +4,7 @@ import BannerComponent from '~/components/BannerComponent/BannerComponent';
 import linhVucStyles from './linhVuc.module.scss';
 import DanhSachDuLieu from '~/components/danhSachDuLieu/danhSachDuLieu';
 import classNames from 'classnames/bind';
+import { useTranslate } from '~/context/LanguageContext';
 
 const cx = classNames.bind(linhVucStyles);
 
@@ -34,6 +35,7 @@ function LinhVuc() {
     const [count, setCount] = useState("30");
     const [searchData, setSearchData] = useState("");
     const [data, setData] = useState(initMockdata);
+    const { t } = useTranslate()
 
     const handleDataFromChild = (searchStr) => {
         console.log(searchStr);
@@ -58,11 +60,11 @@ function LinhVuc() {
                     {
                         searchData ? (
                             <p className={cx('title')}>
-                                Tìm kiếm thành công: "{searchData}", <span className={cx('counting')}>{count}</span> lĩnh vực.
+                                {t("linhVuc.timKiemSuccess")}: "{searchData}", <span className={cx('counting')}>{count}</span> {t("linhVuc.linhVuc")}.
                             </p>
                         ) : (
                             <p className={cx('title')}>
-                                Tổng số <span className={cx('counting')}>{count}</span> lĩnh vực.
+                                {t("linhVuc.total")} <span className={cx('counting')}>{count}</span> {t("linhVuc.linhVuc")}.
                             </p>
                         )
                     }
