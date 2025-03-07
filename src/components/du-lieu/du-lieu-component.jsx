@@ -1,7 +1,6 @@
-import { render } from '@testing-library/react';
-import classNames from 'classnames';
-import duLieuComponentStyle from './du-lieu-component.scss';
-import { EyeFilled, EyeOutlined } from '@ant-design/icons';
+import { EyeFilled } from '@ant-design/icons';
+import classNames from 'classnames/bind';
+import duLieuComponentStyle from './du-lieu-component.module.scss';
 
 const cx = classNames.bind(duLieuComponentStyle);
 

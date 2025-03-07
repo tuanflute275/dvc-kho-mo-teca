@@ -31,6 +31,7 @@ const AppInput = ({
           name={name}
           className={className}
           placeholder={placeholder}
+          defaultValue={defaultValue}
           mode={multiple ? 'multiple' : undefined}
           showSearch={selectSearch}
           optionFilterProp="label"
@@ -40,6 +41,7 @@ const AppInput = ({
           onChange={onChange}
           style={{ width: '100%', ...showError }}
           suffixIcon={suffix}
+          popupMatchSelectWidth={false}
           {...restProps}
         >
           {data?.map((item) => (

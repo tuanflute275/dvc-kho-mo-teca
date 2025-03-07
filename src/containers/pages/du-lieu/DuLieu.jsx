@@ -1,10 +1,8 @@
-import { Button, Col, Layout, Menu, Pagination, Row } from 'antd';
-import duLieuStyle from './duLieu.scss';
-import classNames from 'classnames';
-import ListData from '~/components/du-lieu/du-lieu-component';
-import { useState } from 'react';
-import { ArrowLeftOutlined } from '@ant-design/icons';
+import { Breadcrumb, Col, Layout, Menu, Row } from 'antd';
 
+import classNames from 'classnames/bind';
+import ListData from '~/components/du-lieu/du-lieu-component';
+import duLieuStyle from './DuLieu.module.scss';
 const cx = classNames.bind(duLieuStyle);
 
 //sidebar nhiều cấp
@@ -86,37 +84,34 @@ const data = [1, 2, 3, 4, 5];
 const DuLieu = () => {
     const openKeys = getAllSubmenuKeys(items);
     return (
-        <Layout className={cx('container')}>
-            <Row gutter={[16, 16]}>
-                <Col span={6} className={cx('sidebar')}>
-                    <Menu defaultOpenKeys={openKeys} mode="inline" items={items} />
-                </Col>
-                <Col span={18} className={cx('main')}>
-                    <div className={cx('link')}>
-                        <a>Trang chủ </a> >> <a> Dữ liệu tìm kiếm </a>
-                    </div>
-                    <div className={cx('title')}>
-                        <span>500</span> bộ dữ liệu được tìm thấy
-                    </div>
-                    <div className={cx('list')}>
-                        {data.map((item) => (
-                            <ListData key={item} data={item} />
-                        ))}
-                    </div>
-                    {/* <div className={cx('pagination')}>
-                        <div className="page-none"></div>
-                        <div className="page-center">
-                            <Button icon={<ArrowLeftOutlined />} className={cx('arrow-left')}></Button>
-                            <Button className={cx('next')}>Trang tiếp</Button>
+        <>
+            <Menu className={cx('sidebar', 'sidebar-horizontal')} mode="horizontal" items={items} />
+            <Layout className={cx('container')}>
+                <Row gutter={[16, 16]}>
+                    <Col lg={6} className={cx('sidebar', 'sidebar-vertical')}>
+                        <Menu defaultOpenKeys={openKeys} mode="inline" items={items} />
+                    </Col>
+                    <Col md={24} lg={18} className={cx('main')}>
+                        <div className={cx('link')}>
+                            <Breadcrumb separator=">>">
+                                <Breadcrumb.Item>
+                                    <a href="/">Trang chủ</a>
+                                </Breadcrumb.Item>
+                                <Breadcrumb.Item>Dữ liệu tìm kiếm</Breadcrumb.Item>
+                            </Breadcrumb>
                         </div>
-                        <div className={cx('page')}>
-                            Trang <input type="number" min={1} />
-                            <span>Của 15</span>
+                        <div className={cx('title')}>
+                            <span>500</span> bộ dữ liệu được tìm thấy
                         </div>
-                    </div> */}
-                </Col>
-            </Row>
-        </Layout>
+                        <div className={cx('list')}>
+                            {data.map((item) => (
+                                <ListData key={item} data={item} />
+                            ))}
+                        </div>
+                    </Col>
+                </Row>
+            </Layout>
+        </>
     );
 };
 

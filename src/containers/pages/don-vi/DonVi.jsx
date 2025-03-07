@@ -1,84 +1,109 @@
 import { Layout, Row } from 'antd';
-import { useState } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import classNames from 'classnames/bind';
 import BannerComponent from '~/components/BannerComponent/BannerComponent';
-import './donVi.scss';
 import DanhSachDuLieu from '~/components/danhSachDuLieu/danhSachDuLieu';
+import donViStyle from './donVi.module.scss';
+
+const cx = classNames.bind(donViStyle);
 
 function DonVi() {
-    const [tinhThanhCount, setTinhThanhCount] = useState("64");
+    const initMockdata = [
+        { "title": "Y tế", "count": 1500 },
+        { "title": "Giáo dục", "count": 1500 },
+        { "title": "Công nghệ", "count": 1500 },
+        { "title": "Tài chính", "count": 1500 },
+        { "title": "Thương mại", "count": 1500 },
+        { "title": "Du lịch", "count": 1500 },
+        { "title": "Nông nghiệp", "count": 1500 },
+        { "title": "Xây dựng", "count": 1500 },
+        { "title": "Giao thông", "count": 1500 },
+        { "title": "Môi trường", "count": 1500 },
+        { "title": "Bất động sản", "count": 1500 },
+        { "title": "Năng lượng", "count": 1500 },
+        { "title": "Sản xuất", "count": 1500 },
+        { "title": "Dịch vụ", "count": 1500 },
+        { "title": "Văn hóa", "count": 1500 },
+        { "title": "Giải trí", "count": 1500 },
+        { "title": "Thể thao", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 },
+        { "title": "Văn hóa", "count": 1500 },
+        { "title": "Giải trí", "count": 1500 },
+        { "title": "Thể thao", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 },
+        { "title": "Văn hóa", "count": 1500 },
+        { "title": "Giải trí", "count": 1500 },
+        { "title": "Thể thao", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 },
+        { "title": "Văn hóa", "count": 1500 },
+        { "title": "Giải trí", "count": 1500 },
+        { "title": "Thể thao", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 },
+        { "title": "An ninh", "count": 1500 },
+        { "title": "Văn hóa", "count": 1500 },
+        { "title": "Giải trí", "count": 1500 },
+        { "title": "Thể thao", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 },
+        { "title": "An ninh", "count": 1500 },
+        { "title": "Văn hóa", "count": 1500 },
+        { "title": "Giải trí", "count": 1500 },
+        { "title": "Thể thao", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 },
+        { "title": "An ninh", "count": 1500 },
+        { "title": "Văn hóa", "count": 1500 },
+        { "title": "Giải trí", "count": 1500 },
+        { "title": "Thể thao", "count": 1500 },
+        { "title": "Thời trang", "count": 1500 },
+        { "title": "Truyền thông", "count": 1500 }
+    ]
     const [boBanCount, setBannedCount] = useState("30");
+    const [searchData, setSearchData] = useState("");
+    const [tinhThanhCount, setTinhThanhCount] = useState("64");
 
-    const nodata = [];
-    const data = [
-        { title: "Hà Nội", count: 1500 },
-        { title: "Hồ Chí Minh", count: 1500 },
-        { title: "Đà Nẵng", count: 1500 },
-        { title: "Nam Định", count: 1500 },
-        { title: "Nha Trang", count: 1500 },
-        { title: "Hòa Bình", count: 1500 },
-        { title: "Đà Lạt", count: 1500 },
-        { title: "Lâm Đồng", count: 1500 },
-        { title: "Bình Dương", count: 1500 },
-        { title: "Cần Thơ", count: 1500 },
-        { title: "Hải Phòng", count: 1500 },
-        { title: "Thanh Hóa", count: 1500 },
-        { title: "Nghệ An", count: 1500 },
-        { title: "Bắc Ninh", count: 1500 },
-        { title: "Thái Nguyên", count: 1500 },
-        { title: "Bình Thuận", count: 1500 },
-        { title: "Lâm Đồng", count: 1500 },
-        { title: "Bình Dương", count: 1500 },
-        { title: "Cần Thơ", count: 1500 },
-        { title: "Hải Phòng", count: 1500 },
-        { title: "Thanh Hóa", count: 1500 },
-        { title: "Nghệ An", count: 1500 },
-        { title: "Bắc Ninh", count: 1500 },
-        { title: "Thái Nguyên", count: 1500 },
-        { title: "Bình Thuận", count: 1500 },
-        { title: "Lâm Đồng", count: 1500 },
-        { title: "Bình Dương", count: 1500 },
-        { title: "Cần Thơ", count: 1500 },
-        { title: "Hải Phòng", count: 1500 },
-        { title: "Thanh Hóa", count: 1500 },
-        { title: "Nghệ An", count: 1500 },
-        { title: "Bắc Ninh", count: 1500 },
-        { title: "Thái Nguyên", count: 1500 },
-        { title: "Bình Thuận", count: 1500 },
-        { title: "Lâm Đồng", count: 1500 },
-        { title: "Bình Dương", count: 1500 },
-        { title: "Cần Thơ", count: 1500 },
-        { title: "Hải Phòng", count: 1500 },
-        { title: "Thanh Hóa", count: 1500 },
-        { title: "Nghệ An", count: 1500 },
-        { title: "Thanh Hóa", count: 1500 },
-        { title: "Nghệ An", count: 1500 },
-        { title: "Bắc Ninh", count: 1500 },
-        { title: "Thái Nguyên", count: 1500 },
-        { title: "Bình Thuận", count: 1500 },
-        { title: "Lâm Đồng", count: 1500 },
-        { title: "Bình Dương", count: 1500 },
-        { title: "Cần Thơ", count: 1500 },
-        { title: "Hải Phòng", count: 1500 },
-        { title: "Thanh Hóa", count: 1500 },
-        { title: "Nghệ An", count: 1500 },
-    ];
+    const [data, setData] = useState(initMockdata);
+
+    const handleDataFromChild = (searchStr) => {
+        console.log(searchStr);
+        setSearchData(searchStr);
+        // filter data based on search string
+        setData(initMockdata.filter(item => item.title.toLowerCase().includes(searchStr.toLowerCase())));
+    }
+
+    useEffect(() => {
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100);
+        setBannedCount(data.length)
+
+
+    }, [searchData])
 
     return (
         <>
-            <BannerComponent isHienThiInput={true} />
+            <BannerComponent isHienThiInput={true} handleSubmitForm={handleDataFromChild} />
 
-            <Layout className='container'>
-                <Row gutter={[16, 16]}  >
-                    <p className='title'>
-                        <span className='counting'>{tinhThanhCount}</span> tỉnh thành phố, <span className='counting'>{boBanCount}</span> bộ ban ngành, cơ quan ngang bộ.
+            <Layout className={cx('container')}>
+                <Row gutter={[16, 16]}>
+                    <p className={cx('title')}>
+                        <span className={cx('counting')}>{tinhThanhCount}</span> tỉnh thành phố,
+                        {" "}<span className={cx('counting')}>{boBanCount}</span> bộ ban ngành, cơ quan ngang bộ.
                     </p>
                 </Row>
 
                 <DanhSachDuLieu subDomain={"don-vi"} data={data} />
-            </Layout >
-
+            </Layout>
         </>
-    )
+    );
 }
 
-export default DonVi
+export default DonVi;

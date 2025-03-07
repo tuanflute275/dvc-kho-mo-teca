@@ -2,14 +2,17 @@ import React from 'react';
 import { Flex, Layout } from 'antd';
 import AppFooter from './footer/AppFooter';
 import AppHeader from './header/AppHeader';
-import './masterLayout.scss';
+import style from './masterLayout.module.scss';
 import { Content } from 'antd/es/layout/layout';
 import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(style)
 
 const MasterLayout = ({ child }) => {
   return (
     <Flex gap="middle" wrap>
-      <Layout className="layout">
+      <Layout className={cx("layout")}>
         <Layout>
           <AppHeader></AppHeader>
           <Content>{React.Children.only(child)}</Content>

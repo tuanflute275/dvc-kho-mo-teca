@@ -1,7 +1,7 @@
-@import "../../../styles/variables";
+@import '../../../styles/variables';
 
 .footer {
-    background-color: #FFF5E1;
+    background-color: #fff5e1;
     border-top: 2px solid #d71920;
     text-align: center;
     padding: 0;
@@ -30,7 +30,7 @@
 .footer-name {
     font-size: 18px;
     font-weight: bold;
-    color: #b22222 !important;
+    color: #b22222;
 }
 
 .footer-contact {
@@ -81,7 +81,7 @@
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px; 
+    padding: 0 20px;
 }
 
 .footer-copyright {
@@ -89,13 +89,13 @@
     color: white;
     text-align: left;
     font-size: 14px;
-    margin-top: 10px; 
-    line-height: 19px; 
+    margin-top: 10px;
+    line-height: 19px;
     padding: 8px 0;
 }
 
 .footer-link {
-    display: block; 
+    display: block;
     font-size: 13px;
     font-weight: bold;
     color: #000;

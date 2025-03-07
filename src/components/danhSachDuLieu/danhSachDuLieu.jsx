@@ -5,7 +5,12 @@ import { Link } from "react-router-dom";
 import { useTranslate } from "~/context/LanguageContext";
 import { compareValues } from "~/utils/helper";
 import { AppButton, AppInput } from "../common";
-import "./danhSachDuLieu.scss";
+
+import classNames from "classnames/bind";
+
+import styles from "./danhSachDuLieu.module.scss";
+
+const cx = classNames.bind(styles)
 
 const MAX_ITEMS_PER_PAGE = 40; // Số lượng bản ghi tối đa trên mỗi trang
 const ROW_SIZE = 8; // Số danh mục trên mỗi hàng
@@ -70,11 +75,17 @@ const DanhSachDuLieu = ({ subDomain, data }) => {
         rows.push(displayData.slice(i, i + ROW_SIZE));
     }
 
+    useEffect(() => {
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100);
+    }, [])
+
     if (compareValues(data.length, 0)) {
         return (
             <>
-                <div className="item-container">
-                    <div className="no-data">{t('dsDuLieu.khongCoDuLieu.noiDung')}</div>
+                <div className={cx("item-container")}>
+                    <div className={cx("no-data")}>{t('dsDuLieu.khongCoDuLieu.noiDung')}</div>
                     <Empty image={Empty.PRESENTED_IMAGE_DEFAULT} description={t('dsDuLieu.khongCoDuLieu.tieuDe')} />
                 </div>
             </>
@@ -83,36 +94,36 @@ const DanhSachDuLieu = ({ subDomain, data }) => {
 
     return (
         <>
-            <div className="item-container">
+            <div className={cx("item-container")}>
                 {rows.map((row, rowIndex) => (
-                    <Card className="item-row-card" key={rowIndex} style={{ padding: 0 }} variant>
-                        <div className="item-row">
+                    <Card className={cx("item-row-card")} key={rowIndex} style={{ padding: 0 }} variant>
+                        <div className={cx("item-row")}>
                             {row.map((item, index) => (
-                                <div className="item-wrapper" key={index}>
-                                    <Link to={`/${subDomain}/${item.slug}`} className="item-link">
-                                        <div className="item">
-                                            <div className="item-header">
-                                                <FolderOutlined className="icon" />
-                                                <span className="item-title">{item.title}</span>
+                                <div className={cx("item-wrapper")} key={index}>
+                                    <Link to={`/${subDomain}/${item.slug}`} className={cx("item-link")}>
+                                        <div className={cx("item")}>
+                                            <div className={cx("item-header")}>
+                                                <FolderOutlined className={cx("icon")} />
+                                                <span className={cx("item-title")}>{item.title}</span>
                                             </div>
-                                            <p><span className="item-count">{item.count}</span> {t('dsDuLieu.boDuLieu')}</p>
+                                            <p><span className={cx("item-count")}>{item.count}</span> {t('dsDuLieu.boDuLieu')}</p>
                                         </div>
                                     </Link>
-                                    {index !== row.length - 1 && <Divider type="vertical" className="item-divider" />}
+                                    {index !== row.length - 1 && <Divider type="vertical" className={cx("item-divider")} />}
                                 </div>
                             ))}
                         </div>
                     </Card>
                 ))}
             </div>
-            <div className="pagination">
+            <div className={cx("pagination")}>
                 <Row align={"end"} justify={"space-between"} gutter={[16, 16]}>
                     <Col></Col>
                     <Col>
-                        <Row className="navigate_button" justify={"space-between"} gutter={[16, 0]}>
+                        <Row className={cx("navigate_button")} justify={"space-between"} gutter={[16, 0]}>
                             <Col>
                                 <AppButton
-                                    className="prev_button"
+                                    className={cx("prev_button")}
                                     icon={<ArrowLeftOutlined />}
                                     onClick={handlePrevPage}
                                     disabled={pageNumber <= 1}
@@ -120,7 +131,7 @@ const DanhSachDuLieu = ({ subDomain, data }) => {
                             </Col>
                             <Col>
                                 <AppButton
-                                    className="next_button"
+                                    className={cx("next_button")}
                                     text={t('dsDuLieu.trangTiep')}
                                     onClick={handleNextPage}
                                     disabled={pageNumber >= totalPage}
@@ -132,7 +143,7 @@ const DanhSachDuLieu = ({ subDomain, data }) => {
                         <Row gutter={[16, 0]} align={"middle"} justify={"space-between"}>
                             <p>{t('dsDuLieu.Trang')}</p>
                             <AppInput
-                                className={"page_number"}
+                                className={cx("page_number")}
                                 value={pageNumber}
                                 type={"number"}
                                 style={{ width: "50px" }}

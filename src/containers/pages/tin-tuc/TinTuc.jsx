@@ -1,5 +1,5 @@
 import React from 'react'
-import "./tinTuc.scss"
+import "./tinTuc.module.scss"
 
 const TinTuc = () => {
   return (

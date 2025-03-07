@@ -6,24 +6,31 @@ main {
     max-width: 80%;
     margin: 0 auto;
     padding: 0 !important;
-    // background-color: rgb(255, 255, 255) !important;
 }
 
 // sidebar styles
+.sidebar-horizontal {
+    display: none;
+}
 .sidebar {
     background-color: #f0f0f0 !important;
     padding: 0 !important;
-}
-
-.sidebar .ant-menu-submenu-arrow {
-    display: none;
-}
-
-.sidebar .ant-menu-submenu-title {
-    color: #000 !important;
-}
-.sidebar .ant-menu-item-selected {
-    color: #000 !important;
+    :global(.parent_menu_item) {
+        &:hover {
+            background-color: transparent !important;
+        }
+    }
+    :global(.ant-menu-submenu-title) {
+        padding-left: 10px !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        &:hover {
+            background-color: transparent !important;
+        }
+    }
+    :global(.ant-menu-submenu-arrow) {
+        display: none;
+    }
 }
 
 .sidebar .parent_menu_item {
@@ -32,29 +39,12 @@ main {
     font-weight: bold;
 }
 
-.sidebar .ant-menu-submenu .ant-menu-title-content,
-.ant-menu-submenu-title {
-    padding-left: 10px !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-.sidebar .ant-menu-submenu :hover {
-    background-color: transparent !important;
-}
-
 .sidebar .sub_menu_items {
     background-color: white !important;
     border-radius: unset !important;
-}
-
-.sidebar .sub_menu_items:hover {
-    background-color: white !important;
-}
-
-.sidebar .sub_menu_items div {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    &:hover {
+        background-color: white !important;
+    }
 }
 
 .sidebar .sub_menu_items .number {
@@ -100,8 +90,25 @@ main {
 
 //responsive
 @media (max-width: 768px) {
-    .main .pagination .page-none {
+    .sidebar-vertical {
         display: none;
+    }
+    .sidebar-horizontal {
+        display: block;
+        background-color: #f0f0f0;
+        :global(.ant-menu-submenu) {
+            background-color: transparent !important;
+        }
+        :global(.ant-menu-submenu-open) {
+            &::after {
+                content: '';
+                border-bottom-color: #f0f0f0 !important;
+            }
+            &::before {
+                content: '';
+                border-bottom-color: #f0f0f0 !important;
+            }
+        }
     }
 }
 

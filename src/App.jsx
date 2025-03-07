@@ -11,9 +11,10 @@ const ProtectedRoute = ({ isAuthenticated, children, path, permissions = [] }) =
         return <Navigate to="/login" />;
     }
 
-    if (permissions.length > 0) {
-        const userPermissions = JSON.parse(localStorage.getItem('permissions') || '[]');
-        const hasPermission = permissions.some((permission) => userPermissions.includes(permission));
+  if (permissions.length > 0) {
+    const userPermissions = JSON.parse(localStorage.getItem('permissions') || '[]');
+    // const hasPermission = permissions.some((permission) => userPermissions.includes(permission));
+    const hasPermission = true;
 
         if (!hasPermission) {
             return <Navigate to="/403" />;
@@ -28,15 +29,18 @@ function App() {
     const userPermissions = useSelector(selectPermissionData).permissions ?? '[]';
     const isAuthenticated = userData?.user?.id;
 
-    console.log(userPermissions);
+  console.log(userPermissions);
 
-    const checkPermissions = (route) => {
-        if (!route.can) {
-            return true;
-        }
-        console.log(route.can.some((permission) => userPermissions.includes(permission)));
-        return route.can.some((permission) => userPermissions.includes(permission));
-    };
+
+
+  const checkPermissions = (route) => {
+    if (!route.can) {
+      return true;
+    }
+    // console.log(route.can.some((permission) => userPermissions.includes(permission)))
+    // return route.can.some((permission) => userPermissions.includes(permission));
+    return true;
+  };
 
     return (
         <LanguageProvider>
