@@ -32,6 +32,9 @@ main {
     :global(.ant-menu-submenu-arrow) {
         display: none;
     }
+    :global(.ant-menu-submenu div) {
+        color: #000 !important;
+    }
 }
 
 .sidebar .parent_menu_item {
@@ -110,6 +113,40 @@ main {
                 border-bottom-color: #f0f0f0 !important;
             }
         }
+        :global(.sub_menu_items .number) {
+            background-color: #ffeb3b !important;
+            color: #000;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            height: 24px;
+            line-height: 16px;
+            text-align: center;
+            margin-left: 8px;
+        }
+    }
+    .parent_menu_item {
+        &:hover {
+            background-color: transparent !important;
+        }
+    }
+    .ant-menu-item-selected {
+        color: #000 !important;
+    }
+    .number {
+        background-color: #ffeb3b;
+        color: #000;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: bold;
+        display: inline-block;
+        height: 24px;
+        line-height: 16px;
+        text-align: center;
+        margin-left: 8px;
     }
 }
 

@@ -1,6 +1,8 @@
 import { EyeFilled } from '@ant-design/icons';
 import classNames from 'classnames/bind';
 import duLieuComponentStyle from './du-lieu-component.module.scss';
+import { Button } from 'antd';
+import { AppButton } from '../common';
 
 const cx = classNames.bind(duLieuComponentStyle);
 
@@ -25,18 +27,10 @@ const ListData = (data) => {
                 </span>
             </div>
             <div className={cx('action')}>
-                <button className={cx('button')} style={{ backgroundColor: 'rgb(233 121 11)' }}>
-                    PDF
-                </button>
-                <button className={cx('button')} style={{ backgroundColor: 'rgb(0, 100, 0)' }}>
-                    Excel
-                </button>
-                <button className={cx('button')} style={{ backgroundColor: 'rgb(53 53 213)' }}>
-                    Word
-                </button>
-                <button className={cx('button')} style={{ backgroundColor: 'rgb(157 157 21 / 88%)' }}>
-                    Csw
-                </button>
+                <AppButton className={cx('button')} style={{ backgroundColor: 'rgb(233 121 11)' }} text={'PDF'} />
+                <AppButton className={cx('button')} style={{ backgroundColor: 'rgb(0, 100, 0)' }} text={'Excel'} />
+                <AppButton className={cx('button')} style={{ backgroundColor: 'rgb(53 53 213)' }} text={'Word'} />
+                <AppButton className={cx('button')} style={{ backgroundColor: 'rgb(157 157 21 / 88%)' }} text={'Csw'} />
             </div>
         </div>
     );
