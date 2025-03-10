@@ -13,7 +13,7 @@ const TrangChu = () => {
     return (
         <>
             <div className="banner">
-                <div className="container">
+                <div className="container-home">
                     <Row align="middle" justify="center" gutter={[16, 16]}>
                         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                             <div style={{ background: '#ddd', padding: '20px' }}>Cột 1</div>
@@ -25,7 +25,7 @@ const TrangChu = () => {
                 </div>
             </div>
             <div className="content">
-                <div className="container list-options">
+                <div className="container-home list-options">
                     <Flex justify="center" wrap="wrap" gap="small">
                         <NavLink to={'/don-vi'}>
                             <Card
