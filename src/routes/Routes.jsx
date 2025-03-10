@@ -9,6 +9,7 @@ import DonVi from '~/containers/pages/don-vi/DonVi';
 import LinhVuc from '~/containers/pages/linh-vuc/LinhVuc';
 import TinTuc from '~/containers/pages/tin-tuc/TinTuc';
 import ChiTietDuLieu from '~/containers/pages/chi-tiet-du-lieu/ChiTietDuLieu';
+import Demo from '~/containers/pages/demo/Demo';
 
 export const appRoutes = [
   {
@@ -60,6 +61,11 @@ export const appRoutes = [
   {
     path: '/chi-tiet-du-lieu',
     element: <MasterLayout child={<ChiTietDuLieu />} />,
+    protected: false,
+  },
+  {
+    path: '/demo',
+    element: <MasterLayout child={<Demo />} />,
     protected: false,
   },
   {

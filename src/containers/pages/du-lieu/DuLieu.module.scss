@@ -35,8 +35,13 @@ main {
     :global(.ant-menu-submenu div) {
         color: #000 !important;
     }
+    :global(.ant-menu-item) {
+        // margin: 0;
+    }
 }
-
+:global(.ant-menu-inline) {
+    background: transparent !important;
+}
 .sidebar .parent_menu_item {
     background-color: #d3d3d3;
     border-radius: unset !important;
