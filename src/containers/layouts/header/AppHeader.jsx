@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Header } from 'antd/es/layout/layout';
 import { AppButton } from '~/components/common';
 import { Row, Col, Select, Drawer, Button, Flex, Avatar } from 'antd';
@@ -12,7 +12,7 @@ import zhIcon from '~/assets/images/language/zh.png';
 import classNames from 'classnames/bind';
 import styles from './appHeader.module.scss';
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
 const AppHeader = () => {
     const { t, language, setLanguage } = useTranslate();
@@ -20,43 +20,55 @@ const AppHeader = () => {
     const navigate = useNavigate();
 
     const languageOptions = [
-        { value: 'vi', label: <Avatar src={viIcon} alt="Vietnamese" className={cx("flag-icon")} /> },
-        { value: 'en', label: <Avatar src={enIcon} alt="English" className={cx("flag-icon")} /> },
-        { value: 'zh', label: <Avatar src={zhIcon} alt="Chinese" className={cx("flag-icon")} /> },
+        { value: 'vi', label: <Avatar src={viIcon} alt="Vietnamese" className={cx('flag-icon')} /> },
+        { value: 'en', label: <Avatar src={enIcon} alt="English" className={cx('flag-icon')} /> },
+        { value: 'zh', label: <Avatar src={zhIcon} alt="Chinese" className={cx('flag-icon')} /> },
     ];
 
     const handleNavigateLogin = () => {
         navigate('/login');
     };
+    useEffect(() => {
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .ant-select-focused .ant-select-selector {
+                box-shadow: none !important;
+                -webkit-box-shadow: none !important;
+                outline: none !important;
+                border-color: transparent !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }, []);
     return (
         <>
-            <Header className={cx("header")}>
-                <div className={cx("header-desktop")}>
-                    <div className={cx("header-container")}>
-                        <Row justify="space-between" align="middle" className={cx("header-row")}>
-                            <Col xs={12} sm={12} md={8} className={cx("logo-container")}>
+            <Header className={cx('header')}>
+                <div className={cx('header-desktop')}>
+                    <div className={cx('header-container')}>
+                        <Row justify="space-between" align="middle" className={cx('header-row')}>
+                            <Col xs={12} sm={12} md={8} className={cx('logo-container')}>
                                 <NavLink to="/" className={({ isActive }) => (isActive ? cx('active') : '')}>
-                                    <div className={cx("logo")}>
+                                    <div className={cx('logo')}>
                                         <img src={logo} alt="Logo" />
-                                        <h2 className={cx("header-title")}>{t('app.tieuDe')}</h2>
+                                        <h2 className={cx('header-title')}>{t('app.tieuDe')}</h2>
                                     </div>
                                 </NavLink>
                             </Col>
 
-                            <Col xs={24} sm={12} md={8} className={cx("header-right")}>
+                            <Col xs={24} sm={12} md={8} className={cx('header-right')}>
                                 <Row justify="center" align="middle">
-                                    <div className={cx("flag-header")}>
-                                        <Col className={cx("reset")}>
+                                    <div className={cx('flag-header')}>
+                                        <Col className={cx('reset')}>
                                             <Select
                                                 defaultValue={language}
                                                 onChange={setLanguage}
-                                                className={cx("language-select")}
+                                                className={cx('language-select')}
                                                 options={languageOptions}
                                                 popupMatchSelectWidth={false}
                                             />
                                         </Col>
                                     </div>
-                                    <div className={cx("btn-login")}>
+                                    <div className={cx('btn-login')}>
                                         <Col>
                                             <AppButton
                                                 onClick={handleNavigateLogin}
@@ -71,30 +83,33 @@ const AppHeader = () => {
                     </div>
                 </div>
 
-                <div className={cx("header-mobile")}>
-                    <div className={cx("header-container")}>
-                        <Row justify="space-between" align="middle" className={cx("header-row")}>
-                            <Col xs={12} sm={12} md={8} className={cx("logo-container")}>
-                                <div className={cx("logo")}>
-                                    <img src={logo} alt="Logo" />
-                                    <h2 className={cx("header-title")}>{t('app.tieuDe')}</h2>
-                                </div>
+                <div className={cx('header-mobile')}>
+                    <div className={cx('header-container')}>
+                        <Row justify="space-between" align="middle" className={cx('header-row')}>
+                            <Col xs={12} sm={12} md={8} className={cx('logo-container')}>
+                                <NavLink to="/" className={({ isActive }) => (isActive ? cx('active') : '')}>
+                                    <div className={cx('logo')}>
+                                        <img src={logo} alt="Logo" />
+                                        <h2 className={cx('header-title')}>{t('app.tieuDe')}</h2>
+                                    </div>
+                                </NavLink>
                             </Col>
-                            <Col xs={6} sm={6} md={6} className={cx("mobile-menu-button")}>
+                            <Col xs={6} sm={6} md={6} className={cx('mobile-menu-button')}>
                                 <Button type="primary" icon={<MenuOutlined />} onClick={() => setOpen(true)} />
                             </Col>
 
-                            <Col xs={4} sm={4} md={6} className={cx("header-right")}>
+                            <Col xs={4} sm={4} md={6} className={cx('header-right')}>
                                 <Row justify="center" align="middle" gutter={[10, 10]}>
-                                    <div className={cx("flag-header")}>
+                                    <div className={cx('flag-header')}>
                                         <Col>
                                             <Select
                                                 defaultValue={language}
                                                 onChange={setLanguage}
-                                                className={cx("language-select")}
+                                                className={cx('language-select')}
                                                 options={languageOptions}
                                                 popupMatchSelectWidth={false}
                                                 suffixIcon={null}
+                                                style={{ outline: 'none', boxShadow: 'none' }}
                                             />
                                         </Col>
                                     </div>
@@ -106,19 +121,25 @@ const AppHeader = () => {
             </Header>
 
             <div>
-                <div className={cx("sub-header")}>
-                    <div className={cx("container")}>
+                <div className={cx('sub-header')}>
+                    <div className={cx('container')}>
                         <Row justify="space-between" align="middle">
-                            <Col xs={24} sm={24} md={24} className={cx("desktop-menu")}>
-                                <nav className={cx("menu")}>
+                            <Col xs={24} sm={24} md={24} className={cx('desktop-menu')}>
+                                <nav className={cx('menu')}>
                                     <Flex wrap>
                                         <NavLink to="/" className={({ isActive }) => (isActive ? cx('active') : '')}>
                                             {t('app.trangChu')}
                                         </NavLink>
-                                        <NavLink to="/du-lieu" className={({ isActive }) => (isActive ? cx('active') : '')}>
+                                        <NavLink
+                                            to="/du-lieu"
+                                            className={({ isActive }) => (isActive ? cx('active') : '')}
+                                        >
                                             {t('app.duLieu')}
                                         </NavLink>
-                                        <NavLink to="/don-vi" className={({ isActive }) => (isActive ? cx('active') : '')}>
+                                        <NavLink
+                                            to="/don-vi"
+                                            className={({ isActive }) => (isActive ? cx('active') : '')}
+                                        >
                                             {t('app.donVi')}
                                         </NavLink>
                                         <NavLink
@@ -127,7 +148,10 @@ const AppHeader = () => {
                                         >
                                             {t('app.linhVuc')}
                                         </NavLink>
-                                        <NavLink to="/tin-tuc" className={({ isActive }) => (isActive ? cx('active') : '')}>
+                                        <NavLink
+                                            to="/tin-tuc"
+                                            className={({ isActive }) => (isActive ? cx('active') : '')}
+                                        >
                                             {t('app.tinTuc')}
                                         </NavLink>
                                     </Flex>
@@ -136,8 +160,8 @@ const AppHeader = () => {
                         </Row>
                     </div>
                 </div>
-                <Drawer title="Danh mục" placement="right" onClose={() => setOpen(false)} open={open}>
-                    <nav className={cx("menu-mobile")}>
+                <Drawer title={t('app.danhMuc')} placement="right" onClose={() => setOpen(false)} open={open}>
+                    <nav className={cx('menu-mobile')}>
                         <NavLink to="/" className={({ isActive }) => (isActive ? cx('active') : '')}>
                             {t('app.trangChu')}
                         </NavLink>

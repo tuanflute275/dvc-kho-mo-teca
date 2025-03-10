@@ -64,7 +64,7 @@
             background-color: #fff5e1 !important;
             &:active {
                 border-color: #fff5e1 !important;
-                box-shadow: none;
+                box-shadow: none !important;
                 outline: unset !important;
                 border: none !important;
             }
@@ -78,20 +78,20 @@
 
             &:focus {
                 border-color: #fff5e1 !important;
-                box-shadow: none;
+                box-shadow: none !important;
                 outline: unset !important;
                 border: none !important;
             }
         }
 
         .ant-select-selector {
-            border: none !important;
-            background-color: transparent !important;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 0 !important;
+            border: none !important;
             box-shadow: none !important;
+            background-color: transparent !important;
         }
 
         .flag-icon {

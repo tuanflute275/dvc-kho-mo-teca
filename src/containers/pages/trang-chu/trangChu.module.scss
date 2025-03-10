@@ -32,8 +32,9 @@
         justify-content: center;
         color: white;
         padding: 0 16px;
-        max-width: 50%;
+        max-width: 100%;
         text-align: justify;
+
 
         .landing-title {
             color: white;
@@ -176,6 +177,7 @@
     font-weight: bold;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    margin: auto;
     &:hover {
         color: rgb(215, 25, 32) !important;
     }

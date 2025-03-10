@@ -103,7 +103,8 @@
     "403Notify": "Xin lỗi, bạn không được phép truy cập trang này.",
     "404Notify": "Xin lỗi, không tìm thấy địa chỉ yêu cầu.",
     "500Notify": "Rất tiếc, đã xảy ra lỗi.",
-    "btnComeback": "Trở lại."
+    "btnComeback": "Trở lại.",
+    "danhMuc": "Danh mục"
   },
   "trangChu": {
     "tieuDe": "Đây là trang chủ",
