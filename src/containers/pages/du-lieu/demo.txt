@@ -1,0 +1,48 @@
+<Menu mode="inline" className={cx('sidebar')} defaultOpenKeys={['donvi', 'linhvuc', 'dinhdang']}>
+                        {/* Đơn vị */}
+                        <Menu.SubMenu key="donvi" title="Đơn vị" className={cx('parent_menu_item')}>
+                            <Menu.SubMenu key="hanoi" title="Hà Nội" className={cx('sub_menu_item')}>
+                                <Menu.Item key="sct" className={cx('sub_menu_item')}>
+                                    Sở công thương
+                                </Menu.Item>
+                                <Menu.Item key="sdl" className={cx('sub_menu_item')}>
+                                    Sở du lịch
+                                </Menu.Item>
+                            </Menu.SubMenu>
+                            <Menu.Item key="hcm" className={cx('sub_menu_item')}>
+                                Hồ Chí Minh
+                            </Menu.Item>
+                            <Menu.Item key="hagiang" className={cx('sub_menu_item')}>
+                                Hà Giang
+                            </Menu.Item>
+                        </Menu.SubMenu>
+
+                        {/* Lĩnh vực */}
+                        <Menu.SubMenu key="linhvuc" title="Lĩnh vực" className={cx('parent_menu_item')}>
+                            <Menu.Item key="yte" className={cx('sub_menu_item')}>
+                                Y tế
+                            </Menu.Item>
+                            <Menu.Item key="giaoduc" className={cx('sub_menu_item')}>
+                                Giáo dục
+                            </Menu.Item>
+                            <Menu.Item key="moitruong" className={cx('sub_menu_item')}>
+                                Môi trường
+                            </Menu.Item>
+                        </Menu.SubMenu>
+
+                        {/* Định dạng */}
+                        <Menu.SubMenu key="dinhdang" title="Định dạng" className={cx('parent_menu_item')}>
+                            <Menu.Item key="pdf" className={cx('sub_menu_item')}>
+                                PDF
+                            </Menu.Item>
+                            <Menu.Item key="excel" className={cx('sub_menu_item')}>
+                                Excel
+                            </Menu.Item>
+                            <Menu.Item key="word" className={cx('sub_menu_item')}>
+                                Word
+                            </Menu.Item>
+                            <Menu.Item key="csv" className={cx('sub_menu_item')}>
+                                Csv
+                            </Menu.Item>
+                        </Menu.SubMenu>
+                    </Menu>

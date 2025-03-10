@@ -1,0 +1,135 @@
+$color-hover: #f5f5f5;
+$border-radius-small: 6px;
+$box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+main {
+    background-color: rgb(255, 255, 255) !important;
+}
+.container {
+    display: flex;
+    max-width: 80%;
+    flex-direction: column;
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255) !important;
+    .border {
+        box-shadow: $box-shadow;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        border: 1px solid #cccccc;
+        border-radius: 2px;
+        background-color: #f0f0f0;
+        .height {
+            padding-left: 8px;
+            height: 30px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            background-color: #c0c0c0;
+        }
+        .box {
+            border-bottom: 1px solid #cccccc;
+            background-color: white;
+            box-shadow: $box-shadow;
+            .border1 {
+                padding: 12px;
+                text-align: justify;
+            }
+            .text_right {
+                margin-left: auto; /* Đẩy div về bên phải */
+                width: 140px;
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+// Mặc định: Ẩn Breadcrumb bên trái
+.breadcrumb-left {
+    display: none;
+}
+
+// Khi màn hình nhỏ hơn 768px, ẩn Breadcrumb bên phải và hiển thị bên trái
+@media (max-width: 768px) {
+    .breadcrumb-left {
+        display: block;
+    }
+    .breadcrumb-right {
+        display: none;
+    }
+}
+.col_right {
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 16px 0px 16px;
+    //display: flex;
+    .padding {
+        padding: 12px 12px 12px 0px;
+        text-align: justify;
+    }
+    .border {
+        box-shadow: $box-shadow;
+        margin-left: 0px;
+        //padding-left: 0px !important;
+        //padding-right: 0px !important;
+        border: 1px solid #cccccc;
+        border-radius: 2px;
+        background-color: #f0f0f0;
+        .width {
+            width: 100%;
+            .margin {
+                padding-left: 8px;
+                background-color: #f0f0f0;
+                box-shadow: $box-shadow;
+                .col_right_title {
+                    font-weight: bold !important;
+                    margin-top: 10px;
+                    margin-bottom: 4px;
+                }
+                .padding_title {
+                    padding: 4px 0px 4px 0px;
+                    font-weight: bold;
+                    .padding_title_item {
+                        font-weight: initial;
+                    }
+                    .blue {
+                        color: rgb(0, 0, 255);
+                    }
+                }
+                .paddingbutton {
+                    padding: 12px 0px 12px 0px;
+                    .buttonsize {
+                        margin-right: 6px;
+                        width: 70px;
+                        height: 23px;
+                        color: white !important;
+                        border: unset !important;
+                        //margin-right: 0px;
+                    }
+                }
+            }
+        }
+    }
+    .btn_xem {
+        box-shadow: $box-shadow;
+        margin: 10px 0px 10px 10px;
+        color: white !important;
+        border: unset !important;
+        background-color: rgb(215, 25, 32) !important;
+    }
+}
+
+.title {
+    font-size: 20px;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+.counting {
+    color: rgb(215, 25, 32);
+}
+
+.light_gray {
+    background-color: #c0c0c0;
+}
+
+.width {
+    width: 100%;
+}

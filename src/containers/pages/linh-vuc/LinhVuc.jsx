@@ -1,9 +1,12 @@
 import { Layout, Row } from 'antd';
 import { useEffect, useState } from 'react';
 import BannerComponent from '~/components/BannerComponent/BannerComponent';
-import './linhVuc.scss';
+import linhVucStyles from './linhVuc.module.scss';
 import DanhSachDuLieu from '~/components/danhSachDuLieu/danhSachDuLieu';
+import classNames from 'classnames/bind';
+import { useTranslate } from '~/context/LanguageContext';
 
+const cx = classNames.bind(linhVucStyles);
 
 function LinhVuc() {
     const initMockdata = [
@@ -32,6 +35,7 @@ function LinhVuc() {
     const [count, setCount] = useState("30");
     const [searchData, setSearchData] = useState("");
     const [data, setData] = useState(initMockdata);
+    const { t } = useTranslate()
 
     const handleDataFromChild = (searchStr) => {
         console.log(searchStr);
@@ -41,6 +45,9 @@ function LinhVuc() {
     }
 
     useEffect(() => {
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100);
         setCount(data.length)
     }, [searchData])
 
@@ -48,16 +55,16 @@ function LinhVuc() {
         <>
             <BannerComponent isHienThiInput={true} handleSubmitForm={handleDataFromChild} />
 
-            <Layout className='container'>
+            <Layout className={cx('container')}>
                 <Row gutter={[16, 16]}  >
                     {
                         searchData ? (
-                            <p className='title'>
-                                Tìm kiếm thành công: "{searchData}", <span className='counting'>{count}</span> lĩnh vực.
+                            <p className={cx('title')}>
+                                {t("linhVuc.timKiemSuccess")}: "{searchData}", <span className={cx('counting')}>{count}</span> {t("linhVuc.linhVuc")}.
                             </p>
                         ) : (
-                            <p className='title'>
-                                Tổng số <span className='counting'>{count}</span> lĩnh vực.
+                            <p className={cx('title')}>
+                                {t("linhVuc.total")} <span className={cx('counting')}>{count}</span> {t("linhVuc.linhVuc")}.
                             </p>
                         )
                     }
